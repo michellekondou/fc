@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 [![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
 
 _s
@@ -46,6 +46,5 @@ Now you're ready to go! The next step is easy to say, but harder to do: make an 
 
 Good luck!
 =======
-# felios
-
->>>>>>> d394cafb2682310cd22eee798d73751101994ba2
+# fc
+>>>>>>> bf0a3edc52c6a7dde76a296daf63b0553b99c428
