@@ -1031,9 +1031,9 @@ object {
 }
 
 .horizontal-grid  .entry-title a {
-        text-decoration: none;
-        font-size: 18px; 
-    }
+	text-decoration: none;
+	font-size: 18px; 
+}
 
 .js .grid-item {
     margin-bottom: 100px;
@@ -1045,8 +1045,19 @@ object {
 	margin-bottom: 3em;
 }
 
-.vertical-grid h2 {
-	margin-left: 1.5em;
+.vertical-grid .post-thumbnail {
+	margin-right: 1.5em;
+}
+
+.vertical-grid .post-thumbnail {
+	width: 145px;
+}
+
+.vertical-grid .post-excerpt {
+	width: calc(100% - 145px);
+}
+
+.vertical-grid  .post-excerpt h2  {
 	margin-top: 0;
 	font-size: 18px;
 }
@@ -1055,7 +1066,11 @@ object {
 	text-decoration: none;
 }
 
-
+.artist-name {
+	font-weight: normal;
+	font-size: 17px;
+	margin-top: 0;
+}
 
 @media (max-width: 1336px) {
     .horizontal-grid {
