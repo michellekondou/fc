@@ -114,6 +114,7 @@ pre {
 
 a {
 	background-color: transparent;
+	text-decoration: none;
 }
 
 /**
@@ -989,6 +990,10 @@ object {
 /*--------------------------------------------------------------
 ## Custom styles
 --------------------------------------------------------------*/
+.site-header {
+	margin-bottom: 3em;
+}
+
 .thumbnail {
 	/* max-width: 150px; */
 }
