@@ -114,7 +114,8 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 		</article>
 
 	<?php endif; ?>
-<?php else : ?>
+<?php elseif ( ! is_home() && ! is_front_page() ) :
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
