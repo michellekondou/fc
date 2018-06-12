@@ -21,7 +21,7 @@ get_header();
 				//the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-
+			<div class="columns">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -34,9 +34,10 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', 'page' );
 
-			endwhile;
+			endwhile; ?>
+			</div>
 
-			felios_numeric_posts_nav();
+			<?php felios_numeric_posts_nav();
 
 		else :
 
