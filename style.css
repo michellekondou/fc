@@ -1089,7 +1089,18 @@ object {
     .horizontal-grid {
         grid-template-columns: repeat(2, 1fr);
         justify-items: left;
-    }
+	}
+	.vertical-grid .post-thumbnail {
+		width: auto;
+	}
+	.vertical-grid {
+		display: block;
+		margin-bottom: 6em;
+
+	}
+	.vertical-grid .post-excerpt {
+		width: 100%;
+	}
 }
 
 @media (min-width: 331px) and (max-width: 465px) {

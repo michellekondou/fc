@@ -61,7 +61,7 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 	<?php elseif ( get_post_type() == 'events' ) : ?>
 
 		<article id="post-<?php the_ID(); ?>" class="vertical-grid">
-			<a href="<?php the_permalink()?>" class="post-thumbnail"><?php the_post_thumbnail($size = 'thumbnail'); ?></a>
+			<a href="<?php the_permalink()?>" class="post-thumbnail"><?php the_post_thumbnail($size = 'medium'); ?></a>
 			<div class="post-excerpt">
 				<h2><a href="<?php the_permalink()?>"><?php the_title(); ?></a></h2>
 				<p class="details">
@@ -89,7 +89,7 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 	<?php elseif ( get_post_type() == 'exhibitions' ) : ?>
 
 		<article id="post-<?php the_ID(); ?>" class="vertical-grid">
-        	<a href="<?php the_permalink()?>" class="post-thumbnail"><?php the_post_thumbnail($size = 'thumbnail'); ?></a>
+        	<a href="<?php the_permalink()?>" class="post-thumbnail"><?php the_post_thumbnail($size = 'medium'); ?></a>
 			<div class="post-excerpt">
 				<h2><a href="<?php the_permalink()?>"><?php the_title(); ?></a></h2>
 				<p class="details">
