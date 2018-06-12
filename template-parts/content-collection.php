@@ -43,10 +43,7 @@ foreach ( $taxonomy_list as $term_obj ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-        <a href="<?php the_permalink()?>">
-			<?php the_title(); ?>
-		</a>
+		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
     </header><!-- .entry-header -->
     
     <figure class="thumbnail">
