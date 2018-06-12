@@ -1072,6 +1072,10 @@ object {
 	margin-top: 0;
 }
 
+.artist-name a:hover {
+	text-decoration: underline;
+}
+
 .artwork-details .artist-name {
 	text-decoration: underline;
 }
