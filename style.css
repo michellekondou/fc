@@ -1072,6 +1072,10 @@ object {
 	margin-top: 0;
 }
 
+.artwork-details .artist-name {
+	text-decoration: underline;
+}
+
 @media (max-width: 1336px) {
     .horizontal-grid {
         grid-template-columns: repeat(3, 1fr);
