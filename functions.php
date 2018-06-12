@@ -645,3 +645,13 @@ function felios_numeric_posts_nav() {
  
 }
 
+// order archive by title
+add_filter('pre_get_posts', 'order_archive_by_title');
+function order_archive_by_title($q) {
+	if ( $q->is_archive && isset($q->query['post_type']) && in_array($q->query['post_type'], array('artists')) ) {
+		$q->set('orderby', 'title');
+		$q->set('order', 'ASC');
+	}
+	return $q;
+}
+
