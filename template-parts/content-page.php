@@ -130,11 +130,12 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 		<?php
 		the_content();
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'felios' ),
-			'after'  => '</div>',
-		) );
-		?>
+		// wp_link_pages( array(
+		// 	'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'felios' ),
+		// 	'after'  => '</div>',
+		// ) );
+		// ?>
+		
 	</div><!-- .entry-content -->
 
 

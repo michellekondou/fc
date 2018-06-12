@@ -92,7 +92,7 @@ foreach ( $taxonomy_list as $term_obj ) {
                 ?>
             </p>
         </div>
-    
+                    
         <?php
             wp_link_pages( array(
                 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'felios' ),

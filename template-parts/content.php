@@ -33,7 +33,8 @@
 
 	<div class="entry-content">
 		<?php
-		if ( is_singular() ) :
+		if ( is_singular() ) : ?>
+		<?php
 		the_content( sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
@@ -45,8 +46,22 @@
 				)
 			),
 			get_the_title()
-		) );	
-		else:
+		) );
+		?>
+		<?php 
+            $images = get_field('gallery');
+            $size = 'medium'; // (thumbnail, medium, large, full or custom size)
+
+            if( $images ): ?>
+                <div class="horizontal-grid">
+                    <?php foreach( $images as $image ): ?>
+                        <figure>
+                            <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                        </figure>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>	
+		<?php else:
 		the_excerpt( sprintf(
 		wp_kses(
 			/* translators: %s: Name of current post. Only visible to screen readers */
@@ -61,10 +76,10 @@
 		) );
 		endif;
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'felios' ),
-			'after'  => '</div>',
-		) );
+		// wp_link_pages( array(
+		// 	'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'felios' ),
+		// 	'after'  => '</div>',
+		// ) );
 		?>
 	</div><!-- .entry-content -->
 

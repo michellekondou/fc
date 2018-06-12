@@ -29,7 +29,7 @@ get_header();
 				get_template_part( 'template-parts/content', 'page' );
 			endwhile; 
 			?>
-			<?php the_posts_navigation(); ?>
+			<?php felios_numeric_posts_nav(); ?>
 			
 		<?php  else :
 

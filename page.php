@@ -11,14 +11,20 @@
  *
  * @package felios
  */
+$news_gallery = get_field('gallery');
 
 get_header();
 ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
+		<?php 
+		if (is_page('news')) :
+		?>
+		<?php get_template_part( 'archive', 'news' ); ?>
+	
 		<?php
+		else: 
 		while ( have_posts() ) :
 			the_post();
 
@@ -30,6 +36,7 @@ get_header();
 			endif;
 
 		endwhile; // End of the loop.
+		endif;
 		?>
 
 		</main><!-- #main -->

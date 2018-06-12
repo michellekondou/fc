@@ -31,7 +31,7 @@ get_header();
 			endwhile; 
 			?>
 			</div><!-- .horizontal-grid -->
-			<?php the_posts_navigation(); ?>
+			<?php felios_numeric_posts_nav(); ?>
 			
 		<?php  else :
 
