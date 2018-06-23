@@ -15,6 +15,8 @@ if(ICL_LANGUAGE_CODE == 'en') {
     $artist_biography = get_field('biography');
     $artist_press =get_field('press');
     $artist_address = get_field('address');
+    $solo_exhibitions = get_field('select_solo_exhibitions');
+    $group_exhibitions = '';
 
 } else {
     //relationship key
@@ -53,12 +55,14 @@ if(ICL_LANGUAGE_CODE == 'en') {
         */
 
         $collection = get_posts(array(
-            'post_type' => 'collection',  
+            'post_type' => 'collection', 
+            'posts_per_page' => -1, 
             'meta_query' => array(
                 array(
                     'key' => $artist_key, // name of custom field
                     'value' => '"' . get_the_ID() . '"', // matches exactly "123", not just 123. This prevents a match for "1234"
-                    'compare' => 'LIKE'
+                    'compare' => 'LIKE',
+
                 )
             )
         ));
@@ -85,6 +89,24 @@ if(ICL_LANGUAGE_CODE == 'en') {
         <section class="biography">
             <h2><?php _e( 'Biography', 'felios-textdomain' ); ?></h2>
             <?php echo $artist_biography; ?>
+            
+            <?php if($solo_exhibitions) : ?>
+            <h3>Solo Exhibitions</h3>
+            <ul>
+                <?php foreach ($solo_exhibitions as $se) : ?>
+                <li><?php echo $se; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+
+            <?php if($group_exhibitions) : ?>
+            <h3>Group Exhibitions</h3>
+            <ul>
+                <?php foreach ($group_exhibitions as $ge) : ?>
+                <li><?php echo $ge; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
         </section>
         <?php endif; ?>
 

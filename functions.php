@@ -544,7 +544,6 @@ function acf_load_select_material_el_field_choices( $field ) {
         }
         
     }
-    
 
     // return the field
     return $field;
@@ -552,6 +551,52 @@ function acf_load_select_material_el_field_choices( $field ) {
 }
 
 add_filter('acf/load_field/name=select_material_el', 'acf_load_select_material_el_field_choices');
+
+function acf_load_select_solo_exhibitions_field_choices( $field ) {
+    
+    // reset choices
+    $field['choices'] = array();
+	
+
+    // if has rows
+    if( have_rows('solo_exhibitions', 'option') ) {
+        
+        // while has rows
+        while( have_rows('solo_exhibitions', 'option') ) {
+            
+            // instantiate row
+            the_row();
+            
+			// vars
+			$title = get_sub_field('title');
+			if($title) $title = '<em>' . $title . '</em>';
+			
+			$year = get_sub_field('year');
+			if($year) $year = '<strong>' . $year . '</strong> ';
+
+			$venue = get_sub_field('venue');
+			if($venue) $venue = ', ' . $venue;
+
+			$location = get_sub_field('location');
+			if($location) $location = ', ' . $location;
+
+			$curation = get_sub_field('curation');
+			if($curation) $curation = ', ' . $curation;
+
+            
+            // append to choices
+			$field['choices'][ $year . $title . $venue . $location . $curation ] = $year . $title . $venue . $location . $curation;
+            
+        }
+        
+    }
+
+	// return the field
+    return $field;
+    
+}
+
+add_filter('acf/load_field/name=select_solo_exhibitions', 'acf_load_select_solo_exhibitions_field_choices');
 
 function remove_custom_taxonomy() {
 	if(ICL_LANGUAGE_CODE == 'el') {
