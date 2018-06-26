@@ -27,16 +27,18 @@ $taxonomy_output = [];
 foreach ( $taxonomy_list as $term_obj ) {
     //get the terms
     $terms = get_the_terms( get_the_ID(), $term_obj ); 
-    $term_label = $terms[0]->taxonomy;
     if ( $terms && ! is_wp_error( $terms ) ) {
-        $term_name = array();
-        foreach ( $terms as $term ) {
-            $term_name[] = $term->$taxonomy_field;
+        $term_label = $terms[0]->taxonomy;
+        if ( $terms && ! is_wp_error( $terms ) ) {
+            $term_name = array();
+            foreach ( $terms as $term ) {
+                $term_name[] = $term->$taxonomy_field;
+            }
+                        
+            $the_terms = join( ", ", $term_name );
+            $term_list = $term_label . ': ' . $the_terms;
+            array_push($taxonomy_output, $term_list);
         }
-                    
-        $the_terms = join( ", ", $term_name );
-        $term_list = $term_label . ': ' . $the_terms;
-        array_push($taxonomy_output, $term_list);
     }
 }
 ?>
@@ -52,7 +54,7 @@ foreach ( $taxonomy_list as $term_obj ) {
 	
 	<div class="entry-content">
         <div class="artwork-details">
-            <p><?php the_field('catalogue_number'); ?></p>
+            <p><?php //the_field('catalogue_number'); ?></p>
             <p><?php the_field('year'); ?></p>
             <p><?php the_field('dimensions'); ?></p>
             <?php echo $description; ?>
@@ -68,11 +70,41 @@ foreach ( $taxonomy_list as $term_obj ) {
             </p>
             <p class="kind">
                 <?php 
+                if($taxonomy_output) {
                   foreach($taxonomy_output as $result) {
                         echo $result, '<br>';
                     } 
+                }
                 ?>
             </p>
+
+            <?php
+            // check if the repeater field has rows of data
+            if( have_rows('gallery') ): ?>
+            <div class="horizontal-grid">
+                <?php 
+                // loop through the rows of data
+                while ( have_rows('gallery') ) : the_row(); ?>
+
+                    <?php 
+                    $image = get_sub_field('image');
+                    $title = get_sub_field('title');
+                    $year = get_sub_field('year');
+                    //$dimensions = get_sub_field('dimensions');
+                    $size = 'medium'; // (thumbnail, medium, large, full or custom size)
+                    if( $image ): ?>
+                        <figure>
+                            <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                            <?php if( $title ) : ?><figcaption><?php echo $title; ?></figcaption><?php endif; ?>
+                        </figure>
+                        
+                    <?php endif; ?>
+
+                <?php endwhile; ?>
+                </div>
+           <?php endif; ?>
+
+        </div>
         </div>
     
         <?php

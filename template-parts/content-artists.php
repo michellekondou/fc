@@ -38,15 +38,6 @@ if(ICL_LANGUAGE_CODE == 'en') {
 
 	<div class="entry-content">
 
-        <?php //if( $artist_address || the_field('email') || the_field('website') ): ?>
-        <section class="contact-details">
-            <h2><?php _e( 'Contact Details', 'felios-textdomain' ); ?></h2>
-            <p><?php the_field('email'); ?></p>
-            <p><?php the_field('website'); ?></p>
-            <?php echo $artist_address; ?>
-        </section>
-        <?php //endif; ?>
- 
         <?php 
 
         /*
@@ -70,18 +61,18 @@ if(ICL_LANGUAGE_CODE == 'en') {
         <?php if( $collection ): ?>
         <section class="artworks-list">
             <h2><?php _e( 'Artworks', 'felios-textdomain' ); ?></h2>
-                <div class="horizontal-grid">
-                <?php foreach( $collection as $item ): ?>
-                    <?php //the_post_thumbnail($item->ID); ?>
-                    <a href="<?php echo get_permalink( $item->ID ); ?>">
-                    <figure>
-                        <?php echo get_the_post_thumbnail( $item->ID, 'medium', array( 'class' => 'test' ) ); ?>
-                        <figcaption><?php echo get_the_title( $item->ID ); ?></figcaption>
-                    </figure>
-                    </a>
-                <?php endforeach; ?>
-                <?php wp_reset_postdata(); ?>
-                </div>  
+            <div class="horizontal-grid">
+            <?php foreach( $collection as $item ): ?>
+                <?php //the_post_thumbnail($item->ID); ?>
+                <a href="<?php echo get_permalink( $item->ID ); ?>">
+                <figure>
+                    <?php echo get_the_post_thumbnail( $item->ID, 'medium', array( 'class' => 'test' ) ); ?>
+                    <figcaption><?php echo get_the_title( $item->ID ); ?></figcaption>
+                </figure>
+                </a>
+            <?php endforeach; ?>
+            <?php wp_reset_postdata(); ?>
+            </div>  
         </section>
         <?php endif; ?>
 
