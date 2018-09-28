@@ -8,3 +8,11 @@
     font-style: normal;
     font-stretch: normal;
 }
+
+@font-face {
+    font-family: 'gfs_didotregular';
+    src: url('fonts/gfsdidot-regular-webfont.woff2') format('woff2'),
+         url('fonts/gfsdidot-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

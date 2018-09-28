@@ -200,8 +200,8 @@ function create_post_type() {
 	 */
 
 	$labels = array(
-		'name'               => _x( 'Έργα', 'general name of the post type' ),
-		'singular_name'      => _x( 'Έργο', 'name for one object of this post type' ),
+		'name'               => _x( 'Works', 'general name of the post type' ),
+		'singular_name'      => _x( 'Work', 'name for one object of this post type' ),
 		'add_new'            => _x( 'Προσθήκη Νέου', 'collection' ),
 		'add_new_item'       => __( 'Προσθήκη νέου έργου' ),
 		'edit_item'          => __( 'Επεξεργασία Έργου' ),

@@ -65,10 +65,22 @@
     }
     .nav-pills {
         list-style: none;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        li {
+            margin-right: 2em;
+        }
     }
+    .dropdown-toggle {
+            @include taxonomy-links;
+        }
     .dropdown-menu {
         display: none;
-        @include serif-regular;
+        
     }
 }
 

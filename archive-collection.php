@@ -34,6 +34,11 @@ get_header();
 							<?php if(function_exists('themelist')) { themelist(); } ?>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" id="shuffle" role="button" data-toggle="dropdown" href="#">
+							<?php if(ICL_LANGUAGE_CODE == 'en') { echo 'shuffle'; } else { echo 'ανακάτεμα';} ?>
+						</a>
+					</li>
 				</ul>
 			</header><!-- .page-header -->
 
