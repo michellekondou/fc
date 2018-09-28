@@ -22,11 +22,15 @@
     font-weight: normal;
 }
 
- @mixin serif-bold {
-    @include serif-regular;
-    font-weight: 700;
+@mixin serif-bold {
+    font-family: 'gfs_didot_rgbold';
+    font-stretch: normal;
 }
 
+ @mixin serif-italic {
+    font-family: 'gfs_didotitalic';
+    font-stretch: normal;
+}
 
 @mixin main-nav-links {
     @include sans-bold;
@@ -37,8 +41,15 @@
 }
 
 @mixin taxonomy-links {
-    @include serif-regular;
+    @include serif-bold;
     font-size: 18px;
+    color: $black;
+    line-height: 1.1;
+}
+
+@mixin archive-header {
+    @include sans-bold;
+    font-size: 24px;
     color: $black;
     line-height: 1.1;
 }

@@ -30,7 +30,7 @@ get_header();
 					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" id="drop-theme" role="button" data-toggle="dropdown" href="#"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'theme'; } else { echo 'θέμα';} ?> <b class="caret"></b></a>
-						<ul id="menu-kind" class="dropdown-menu kind" role="menu" aria-labelledby="drop-kind">
+						<ul id="menu-theme" class="dropdown-menu theme" role="menu" aria-labelledby="drop-theme">
 							<?php if(function_exists('themelist')) { themelist(); } ?>
 						</ul>
 					</li>
