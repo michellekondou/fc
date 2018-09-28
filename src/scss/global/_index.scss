@@ -1,0 +1,8 @@
+body {
+	background: #fff;
+    /* Fallback for when there is no custom background color defined. */
+}
+
+h1 {
+    @include sans-bold;
+}

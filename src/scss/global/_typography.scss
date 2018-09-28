@@ -1,0 +1,39 @@
+/**
+ *  _typography.scss
+ *
+ *
+ */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+//generic
+
+ @mixin sans-bold {
+    font-family: 'Graphik LCG Bold', serif;
+    font-style:   normal;
+    font-stretch: normal;
+    font-weight: normal;
+}
+
+//GFS Didot
+ @mixin serif-regular {
+    font-family: 'GFS Didot', sans-serif;
+    font-style:   normal;
+    font-stretch: normal;
+    font-weight: normal;
+}
+
+ @mixin serif-bold {
+    @include serif-regular;
+    font-weight: 700;
+}
+
+
+@mixin main-nav-links {
+    @include sans-bold;
+    font-size: 18px;
+    color: $black;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+

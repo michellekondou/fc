@@ -1,0 +1,23 @@
+/*--------------------------------------------------------------
+## Pagination
+--------------------------------------------------------------*/
+.pagination {
+
+}
+
+
+.page-numbers {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.page-numbers li {
+	float: left;
+	list-style: none;
+	padding: 1em;
+}
+
+.page-numbers .current {
+	font-weight: bold;
+}

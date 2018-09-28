@@ -132,6 +132,35 @@ function felios_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'felios_scripts' );
 
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); 
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' ); 
+remove_action( 'wp_print_styles', 'print_emoji_styles' ); 
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+/*** dropdown pills ***/
+function eventslist() {
+	$eventscats = wp_list_categories('taxonomy=eventscats&orderby=name&title_li=&hierarchical=0');
+	echo $eventscats;
+}
+
+function kindlist() {        
+	$listkind = wp_list_categories('taxonomy=kind&orderby=name&title_li=&hierarchical=0');
+	echo $listkind;
+}
+function themelist() {
+	$listkind = wp_list_categories('taxonomy=theme&orderby=name&title_li=&hierarchical=0');
+	echo $listkind;
+}
+function colorlist() {
+	$listcolor = wp_list_categories('taxonomy=color&orderby=name&title_li=&hierarchical=0');
+	echo $listcolor;
+}
+
+function catlist() {
+	$listcats = wp_list_categories('taxonomy=category&orderby=name&title_li=&hierarchical=0');
+	echo $listcats;
+}
+
 /**
  * Implement the Custom Header feature.
  */

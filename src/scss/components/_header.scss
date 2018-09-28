@@ -1,0 +1,22 @@
+/*--------------------------------------------------------------
+## Header 
+--------------------------------------------------------------*/
+//structure
+//#masthead.site-header > 
+    //.site-branding > .site-title 
+    //.main-navigation
+        //.menu-toggle [button]
+        //.menu-main-nav-en-container [div]
+            //#primary-menu.menu [ul]
+                //.menu-item [li]
+                //.current-menu-item
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    line-height: 1.1;
+    .site-title {
+        margin: 0;
+    }
+}

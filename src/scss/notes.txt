@@ -1,0 +1,200 @@
+
+
+//  @mixin sans-medium {
+//     font-family: 'GT Eesti Display Medium', sans-serif;
+//     font-style:   normal;
+//     font-stretch: normal;
+// }
+
+//  @mixin sans-light {
+//     font-family: 'GT Eesti Display Light', sans-serif;
+//     font-style:   normal;
+//     font-stretch: normal;
+// }
+
+// //screen subtitle
+// @mixin screen-title-main {
+//     @include sans-medium;
+//     font-size: convert(230, px, rems);
+//     line-height: 250px;
+//     text-transform: uppercase;
+//     letter-spacing: 5px;
+// }
+
+// @mixin screen-title-inner {
+//     @include sans-medium;
+//     font-size: convert(112, px, rems);
+//     line-height: 125px;
+//     text-transform: uppercase;
+//     letter-spacing: 5px;
+// }
+
+// @mixin screen-subtitle {
+//     @include sans-light;
+//     font-size: convert(92, px, rems);
+//     line-height: 105px;
+// }
+
+// @mixin screen-blurb {
+//     @include sans-light;
+//     font-size: convert(72, px, rems);
+//     line-height: 86px;
+//     text-align: center;
+// }
+
+// @mixin card-title {
+//     @include sans-light;
+//     font-size: convert(52, px, rems);
+//     line-height: 56px;
+//     color: white;
+// }
+
+// @mixin card-text {
+//     @include sans-light;
+//     font-size: convert(32, px, rems);
+//     line-height: 50px;
+//     color: white;
+// }
+
+// @mixin flip-card-title {
+//     @include sans-light;
+//     font-size: convert(72, px, rems);
+//     line-height: 78px;
+//     color: white;
+//     letter-spacing: 1px;
+//     text-indent: -70px;
+// }
+
+
+
+
+
+
+//styles
+//main screen 
+    //global header
+    //font-family: sans-medium
+    //font-size: 230px;
+    //line-height: 250px
+
+    //main screen nav
+        //text
+        //font-family: sans-light
+        //font-size: 92px;
+        //line-height: 104.65;
+
+        //button
+        //font-family: sans-light
+        //font-size: 39.32px;
+        //line-height: 58.17px
+
+//inner screen 
+    //header
+    //font-family: sans-medium;
+    //font-size: 112.34px;
+    //line-height: 124.65;
+    //color: $dark; //illustration
+    //color: white //flip cards & video
+
+    //subtitle
+    //font-family: sans-light;
+    //font-size: 92px;
+    //line-height: 104.65px;
+    //color: $dark; //illustration
+    //color: white //flip cards & video
+
+    //blurb
+    //font-family: sans-light;
+    //font-size: 72px;
+    //line-height: 86.4px;
+    //color: white; //for both themes
+
+    //footer menu
+    //border-top-width: 6px;
+    //border-top-color: white;
+
+    //footer menu back button
+    //font-family: sans-light;
+    //font-size: 36px;
+    //line-height: 74px;
+    //color: white;
+    //border-width: 2px;
+
+    //footer menu numbers
+    //font-family: sans;
+    //font-size: 36.57px;
+    //line-height: 33.86px;
+    //color: $dark;
+
+    //illustrationn
+        //numbers
+        //font-family: sans;
+        //font-size: 36.57px;
+        //line-height: 33.86px;
+        //color: $dark;
+
+        //point card
+            //title
+            //font-family: sans-light;
+            //font-size: 52px;
+            //line-height: 56.4px;
+            //color: white;
+
+            //text
+            //font-family: sans-light;
+            //font-size: 32px;
+            //line-height: 50px;
+            //color: white;
+
+    //flip cards
+        //cards
+        //title on card
+        //font-family: sans-light;
+        //font-size: 72px;
+        //line-height: 78.4px;
+        //color: white;
+
+        //card content
+            //title
+            //font-family: sans-light;
+            //font-size: 52px;
+            //line-height: 56.4px;
+            //color: white;
+
+            //text
+            //font-family: sans-light;
+            //font-size: 32px;
+            //line-height: 50px;
+            //color: white;
+
+            //then + now headings
+            //font-family: sans-light;
+            //font-size: 52px;
+            //line-height: 56.4px;
+            //color: white;
+
+    //video
+        //description
+            //title
+            //font-family: sans-light;
+            //font-size: 52px;
+            //line-height: 56.4px;
+            //color: white;
+
+            //text
+            //font-family: sans-light;
+            //font-size: 32px;
+            //line-height: 50px;
+            //color: white;
+
+
+
+
+
+
+
+.medium-size { //button main screen, subtitle
+//font-family: sans-light;
+//font-size: 92px;
+//line-height: 104.65;
+}
