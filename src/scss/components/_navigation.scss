@@ -45,14 +45,19 @@
             a {
                 @include main-nav-links;
             }
-            .wpml-ls-item {
-                a {
-
+            &.wpml-ls-item {
+                margin-top: -4px;
+                span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 12px;
+                    @include button--circle(transparent);
                 }
-                &.wpml-ls-current-language {
-                    a {
-
-                    }
+            }
+            &.wpml-ls-current-language {
+                span {
+                    @include button--circle;
                 }
             }
         }
@@ -63,6 +68,8 @@
     h1 {
         text-align: center;
         @include archive-header;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
     }
     .nav-pills {
         list-style: none;
@@ -92,13 +99,18 @@
             left: 50%;
             transform: translate(-50%);
             list-style: none;
-            @include taxonomy-links;
+            margin-top: 1rem;
+            li {
+                a {
+                    @include taxonomy-links;
+                    font-size: 15px;
+                }
+            }
+            
         }
     }
 }
-@media (max-width: 1366px) {
 
-}
 
 /*--------------------------------------------------------------
 ## Menus Legacy

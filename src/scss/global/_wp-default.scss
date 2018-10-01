@@ -134,7 +134,7 @@ abbr[title] {
 
 b,
 strong {
-	font-weight: bolder;
+	@include serif-bold;
 }
 
 /**
@@ -501,7 +501,7 @@ li > ol {
 }
 
 dt {
-	font-weight: bold;
+	@include serif-bold;
 }
 
 dd {

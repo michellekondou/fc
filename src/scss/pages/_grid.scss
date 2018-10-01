@@ -12,11 +12,17 @@
 .horizontal-grid {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 100px;
     justify-items: left;  
 	padding: 1em 0 0 0;
 	margin-top: 8rem;
+	// figure {
+	// 	height: 350px;
+	// 	img {
+	// 		max-height: 330px;
+	// 	}
+	// }
    
 }
 .horizontal-grid  .entry-title {

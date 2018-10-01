@@ -10,19 +10,29 @@
 }
 
 @font-face {
+  font-weight: 500;
+  font-style: normal;
+  font-family: 'Graphik Medium';
+  src: url("fonts/Graphik-Medium-Web.eot");
+  src: url("fonts/Graphik-Medium-Web.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Graphik-Medium-Web.woff2") format("woff2"),
+    url("fonts/Graphik-Medium-Web.woff") format("woff"),
+    url("fonts/Graphik-Medium-Web.ttf") format("truetype");
+}
+
+@font-face {
     font-family: 'gfs_didotregular';
     src: url('fonts/gfsdidot-webfont.woff2') format('woff2'),
          url('fonts/gfsdidot-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
     font-family: 'gfs_didot_rgbold';
     src: url('fonts/gfsdidotbold-webfont.woff2') format('woff2'),
          url('fonts/gfsdidotbold-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -32,5 +42,4 @@
          url('fonts/gfsdidotitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }

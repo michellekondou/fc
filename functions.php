@@ -122,15 +122,24 @@ add_action( 'widgets_init', 'felios_widgets_init' );
 function felios_scripts() {
 	wp_enqueue_style( 'felios-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'felios-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	//wp_enqueue_script( 'felios-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'felios-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	//wp_enqueue_script( 'felios-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'felios_scripts' );
+
+function my_deregister_style() {
+
+	wp_deregister_style('wpml-menu-item-0');
+	wp_deregister_style('wpml-cms-nav-css');
+	wp_deregister_style('cms-navigation-style-base');
+	wp_deregister_style('cms-navigation-style');
+}
+add_action( 'wp_print_styles', 'my_deregister_style', 100 );
 
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); 
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' ); 

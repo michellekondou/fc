@@ -1,0 +1,13 @@
+button {
+    background-color: none;
+    border: none;
+}
+
+@mixin button--circle($border-color: $black) {
+    border-width: 2px;
+    border-style: solid;
+    border-color: $border-color;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;  
+}

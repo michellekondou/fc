@@ -1,8 +1,16 @@
 body {
-	background: #fff;
+    background: #fff;
+    @include serif-regular;
+    text-rendering: geometricPrecision;
+    margin:0;
+    padding: 0;
     /* Fallback for when there is no custom background color defined. */
 }
 
 h1 {
     @include sans-bold;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 400;  
 }
