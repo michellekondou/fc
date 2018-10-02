@@ -25,7 +25,6 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'felios' ); ?></a>
 
 	<header id="masthead" class="site-header">
-
 		<div class="site-branding">
 			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
