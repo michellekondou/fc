@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>facebook-with-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="felios" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="artwork-portrait" transform="translate(-1078.000000, -1401.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="footer" transform="translate(260.000000, 1389.000000)">
+                <g id="facebook-with-circle" transform="translate(818.000000, 12.000000)">
+                    <path d="M12,0.48 C5.6376,0.48 0.48,5.6376 0.48,12 C0.48,18.3624 5.6376,23.52 12,23.52 C18.3624,23.52 23.52,18.3624 23.52,12 C23.52,5.6376 18.3624,0.48 12,0.48 Z M14.7288,8.4408 L12.9972,8.4408 C12.792,8.4408 12.564,8.7108 12.564,9.0696 L12.564,10.32 L14.73,10.32 L14.4024,12.1032 L12.564,12.1032 L12.564,17.4564 L10.5204,17.4564 L10.5204,12.1032 L8.6664,12.1032 L8.6664,10.32 L10.5204,10.32 L10.5204,9.2712 C10.5204,7.7664 11.5644,6.5436 12.9972,6.5436 L14.7288,6.5436 L14.7288,8.4408 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -34,7 +34,7 @@
 }
 
 @mixin main-nav-links {
-    @include sans-medium;
+    @include sans-bold;
     font-size: 16px;
     color: $black;
     letter-spacing: 1px;
@@ -51,6 +51,28 @@
 @mixin archive-header {
     @include sans-bold;
     font-size: 24px;
+    color: $black;
+    line-height: 1.1;
+}
+
+@mixin work_caption_artist {
+    @include serif-bold;
+    font-size: 14px;
+    color: $black;
+    line-height: 1.1;
+}
+
+@mixin work_caption_title{
+    @include serif-regular;
+    font-size: 14px;
+    color: $black;
+    line-height: 1.1;
+    font-style: italic;
+}
+
+@mixin work_caption_date {
+    @include serif-regular;
+    font-size: 14px;
     color: $black;
     line-height: 1.1;
 }

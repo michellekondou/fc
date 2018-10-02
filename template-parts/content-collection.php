@@ -92,9 +92,13 @@ foreach ( $taxonomy_list as $term_obj ) {
                     $year = get_sub_field('year');
                     //$dimensions = get_sub_field('dimensions');
                     $size = 'medium'; // (thumbnail, medium, large, full or custom size)
+                    var_dump($image);
                     if( $image ): ?>
                         <figure>
-                            <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                          
+                                <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                            
+                            
                             <?php if( $title ) : ?><figcaption><?php echo $title; ?></figcaption><?php endif; ?>
                         </figure>
                         

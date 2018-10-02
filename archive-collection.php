@@ -21,6 +21,7 @@ get_header();
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
 				//the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
+				<?php if ( get_post_type() == 'collection' ) : ?>
 				<ul class="nav nav-pills">
 					<li class="dropdown">
 						<a class="dropdown-toggle" id="drop-kind" role="button" data-toggle="dropdown" href="#"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'kind'; } else { echo 'είδος';} ?> <b class="caret"></b></a>
@@ -40,6 +41,7 @@ get_header();
 						</a>
 					</li>
 				</ul>
+				<?php endif; ?>
 			</header><!-- .page-header -->
 
 			<div class="horizontal-grid">

@@ -42,6 +42,46 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 			array_push($taxonomy_output, $term_list);
 		}
 	}
+
+}
+  
+if ( has_post_thumbnail() ) {
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ));
+	$image_s = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail');
+	$image_m = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium');
+	$image_l = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large');
+	$thumb_id = get_post_thumbnail_id();
+} 
+
+//language variables
+if(ICL_LANGUAGE_CODE == 'en') {
+    //custom fields
+	$artist = get_field('artist');
+	
+} else {
+    //custom fields
+    $artist = get_field('artist_el');
+}
+
+$dimensions = get_field('dimensions'); 
+if($dimensions) {
+	$d_float = str_replace(",",".",$dimensions);
+	$d_arr = explode("x", $d_float);
+	if(count($d_arr) > 0) {
+		if($d_arr[1]) {
+			$work_width = $d_arr[1];
+		} else {
+			$work_width = 'not set';
+		}
+		if($d_arr[0]) {
+			$work_height = $d_arr[0];
+		} else {
+			$work_height = 'not set';
+		}
+	} else {
+		echo 'all dimensions not set';
+	}
+	
 }
 ?>
 <?php if ( is_archive() ) : ?>
@@ -50,11 +90,58 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 			<a href="<?php the_permalink()?>"><?php the_title(); ?></a>
 		</h3>
 	<?php elseif ( get_post_type() == 'collection' ) : ?>
-		
-		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?>> 
-			<?php felios_post_thumbnail(); ?>
+		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<a 
+				class="post-thumbnail<?php 
+				if( $work_width > $work_height) {
+					echo ' landscape';
+				} else if($work_width === $work_height){
+					echo ' square';
+				} else{echo ' portrait';} ?>" href="<?php the_permalink(); ?>">
+				<img 
+					data-mobile-height="<?php echo $image_l[2]; ?>"
+					data-srcset="<?php echo $image_l[0]; ?> 600w, <?php echo $image_m[0]; ?> 400w"
+					data-ie="<?php echo $image_m[0]; ?>"
+					data-sizes="(max-width: 767px) and (min-width: 490px) 600px, 400px"
+					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+					class="attachment-post-thumbnail size-post-thumbnail wp-post-image lazyload"
+					alt="<?php the_title(); ?>">
+			</a>
 			<figcaption>			
-				<a href="<?php the_permalink()?>"><?php the_title(); ?></a>
+				<p class="work-caption__artist">
+				<?php if( $artist ): ?>
+					<?php foreach( $artist as $post): // variable must be called $post (IMPORTANT) ?>
+					<?php setup_postdata($post); 
+					$artist_name = get_the_title();
+					$a_arr = explode(" ",$artist_name);
+					$artist_first_name = $a_arr[1];
+					$artist_last_name = $a_arr[0];
+					?>
+						<a href="<?php the_permalink(); ?>" class="artist-name"><?php echo $artist_first_name . '  ' . $artist_last_name;  ?></a>
+					<?php endforeach; ?>
+					<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+				<?php endif; ?>
+				</p>
+				<p class="work-caption__title">
+					<a href="<?php the_permalink()?>"><?php the_title(); ?></a>
+				</p>
+				<p class="work-caption__date"><?php the_field('year'); ?></p>
+				<p>
+				<?php 
+					$dimensions = get_field('dimensions'); 
+					if($dimensions) {
+						echo '<br>dimensions: ' . $dimensions;
+						echo '<br>' . 'height: ' .  $work_height . '<br>' . 'width: ' . $work_width . '<br> ';
+						if( $work_width > $work_height){
+							echo ' landscape';
+						} else if($work_width === $work_height){
+							echo ' square';
+						}else{
+							echo ' portrait';
+						}
+					}
+				?>
+				</p>
 			</figcaption>
 		</figure>
 
@@ -141,3 +228,4 @@ if ( get_post_type() == 'events' || get_post_type() == 'exhibitions'  ) {
 
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php endif; ?>
+<script src="/wp-content/themes/felios/public/io_lazy.bundle.js"></script>

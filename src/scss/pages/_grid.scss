@@ -12,17 +12,71 @@
 .horizontal-grid {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 330px);
     grid-gap: 100px;
-    justify-items: left;  
+	justify-items: center;
+	justify-content: center;  
 	padding: 1em 0 0 0;
 	margin-top: 8rem;
-	// figure {
-	// 	height: 350px;
-	// 	img {
-	// 		max-height: 330px;
-	// 	}
-	// }
+	figure {
+		.post-thumbnail {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 330px;
+			height: 330px;
+			border: 1px dashed #ccc;
+			&.square {
+				&.small {
+
+				}
+				&.large {
+					
+				}
+			}
+			&.portrait {
+				&.small {
+
+				}
+				&.large {
+
+				}
+			}
+			&.landscape {
+				&.small {
+
+				}
+				&.large {
+					
+				}
+			}
+		}
+		img {
+			max-width: 330px;
+			max-height: 330px;
+		}
+		figcaption {
+			margin-top: 30px;
+			p {
+				margin: 0.8125em 0;
+				font-size: 14px;
+				line-height: 1.1;
+			}
+			.work-caption__artist {
+				a {
+					@include work_caption_artist;
+				}
+			}
+			.work-caption__title {
+				a {
+					@include work_caption_title;
+				}
+			}
+			.work-caption__date {
+				@include work_caption_date;
+			}
+		}
+	}
    
 }
 .horizontal-grid  .entry-title {
