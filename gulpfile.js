@@ -57,7 +57,7 @@ gulp.task('sprites', function () {
 gulp.task('copy-svg', ['sprites'], function () {
     return gulp.src(['src/scss/svg/*.svg'])
         .pipe(revReplace())
-        .pipe(gulp.dest('public/svg/'))
+        .pipe(gulp.dest('svg/'))
 })
 
 // -----------------------------------------------------------------------------
