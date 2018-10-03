@@ -11,7 +11,7 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +25,12 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'felios' ); ?></a>
 
 	<header id="masthead" class="site-header">
+
 		<div class="site-branding">
 			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<i class="icon logo"></i>
+					<?php bloginfo( 'name' ); ?>
+					<i class="icon logo-outlined" title="The Sotiris Felios Collection"></i>
 				</a>
 			</h1>
 		</div><!-- .site-branding -->

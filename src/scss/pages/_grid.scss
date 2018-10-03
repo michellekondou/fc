@@ -20,12 +20,13 @@
 	margin-top: 8rem;
 	figure {
 		.post-thumbnail {
+			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			width: 330px;
 			height: 330px;
-			border: 1px dashed #ccc;
+			// border: 1px dashed #ccc;
 			&.square {
 				&.small {
 
@@ -63,22 +64,48 @@
 				line-height: 1.1;
 			}
 			.work-caption__artist {
-				a {
-					@include work_caption_artist;
-				}
+				@include work_caption_artist;
 			}
 			.work-caption__title {
-				a {
-					@include work_caption_title;
-				}
+				@include work_caption_title;
 			}
 			.work-caption__date {
 				@include work_caption_date;
+			}
+		} 
+	}
+	&.list-layout {
+		display: block;
+		width: 1110px;
+		margin: 0 auto;
+		margin-top: 90px;
+		figure {
+			.post-thumbnail {
+				display: none;
+			}
+			.work-caption__dimensions {
+				display: none;
+			}
+			.work-caption__date {
+				text-align: right;
+			}
+			figcaption {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				margin-top: 0;
+				padding: 8px 0 10px;
+    			border-top: 1px solid $black;
+				p {
+					margin: 0;
+					font-size: 18px;
+					line-height: 1.1;
+				}
 			}
 		}
 	}
    
 }
+
 .horizontal-grid  .entry-title {
 	line-height: 1.2;
 }
@@ -200,12 +227,18 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		width: 1190px;
+		margin: 0 auto;
+		margin-top: 90px;
 	}
 
 	.horizontal-grid figure {
-		width: calc(25% - 60px);
+		width: calc(33.33333% - 60px);
 		margin-right: 60px;
 		margin-bottom: 60px;
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	/*use separate stylesheets for IE9 and below*/

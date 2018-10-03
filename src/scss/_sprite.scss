@@ -8,7 +8,7 @@
     display: inline-block;
     background-image: url("svg/sprite.svg");
     background-repeat: no-repeat;
-    background-size: 36.4em 32em;
+    background-size: 36.4em 34em;
 }
 
 .no-svg .icon:before {
@@ -89,8 +89,17 @@
 
 
 
-  .icon.newsletter:before {
+  .icon.logo-outlined:before {
       background-position: 0em -19em;
+      width: 36.4em;
+      height: 2em;
+  }
+
+
+
+
+  .icon.newsletter:before {
+      background-position: 0em -21em;
       width: 2em;
       height: 1.6em;
   }
@@ -99,7 +108,7 @@
 
 
   .icon.search:before {
-      background-position: 0em -20.6em;
+      background-position: 0em -22.6em;
       width: 1.8em;
       height: 1.8em;
   }
@@ -108,7 +117,7 @@
 
 
   .icon.share:before {
-      background-position: 0em -22.4em;
+      background-position: 0em -24.4em;
       width: 3.2em;
       height: 3.2em;
   }
@@ -117,7 +126,7 @@
 
 
   .icon.thumbnails:before {
-      background-position: 0em -25.6em;
+      background-position: 0em -27.6em;
       width: 3.2em;
       height: 3.2em;
   }
@@ -126,7 +135,7 @@
 
 
   .icon.thumbnails_idle:before {
-      background-position: 0em -28.8em;
+      background-position: 0em -30.8em;
       width: 3.2em;
       height: 3.2em;
   }

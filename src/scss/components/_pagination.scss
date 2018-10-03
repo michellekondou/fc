@@ -7,17 +7,20 @@
 
 
 .page-numbers {
-	overflow: hidden;
 	margin: 0;
 	padding: 0;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	margin-top: 90px;
+	margin-bottom: 90px;
 }
 
 .page-numbers li {
-	float: left;
 	list-style: none;
 	padding: 1em;
 }
 
 .page-numbers .current {
-	//font-weight: bold;
+	@include serif-bold;
 }

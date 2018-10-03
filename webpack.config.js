@@ -7,7 +7,8 @@ module.exports = {
     entry: {
         polyfills: ['./src/js/polyfills.js'], 
         io_lazy: ['./src/js/iolazy.js'],
-        wp_utils: ['./src/js/wp-utils.js']
+        wp_utils: ['./src/js/wp-utils.js'],
+        layout_switch: ['./src/js/layout_switch.js']
     },
     module: {
         rules: [

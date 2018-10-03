@@ -69,12 +69,12 @@ if($dimensions) {
 	$d_arr = explode("x", $d_float);
 	if(count($d_arr) > 0) {
 		if($d_arr[1]) {
-			$work_width = $d_arr[1];
+			$work_width = floatval($d_arr[1]);
 		} else {
 			$work_width = 'not set';
 		}
 		if($d_arr[0]) {
-			$work_height = $d_arr[0];
+			$work_height = floatval($d_arr[0]);
 		} else {
 			$work_height = 'not set';
 		}
@@ -83,6 +83,9 @@ if($dimensions) {
 	}
 	
 }
+
+
+
 ?>
 <?php if ( is_archive() ) : ?>
 	<?php if ( get_post_type() == 'artists' ) : ?>
@@ -91,22 +94,35 @@ if($dimensions) {
 		</h3>
 	<?php elseif ( get_post_type() == 'collection' ) : ?>
 		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<?php if ( has_post_thumbnail() ) : ?>
 			<a 
 				class="post-thumbnail<?php 
-				if( $work_width > $work_height) {
-					echo ' landscape';
-				} else if($work_width === $work_height){
-					echo ' square';
-				} else{echo ' portrait';} ?>" href="<?php the_permalink(); ?>">
+				if($dimensions) {
+					if($work_height && $work_width) {
+						if( $work_width > $work_height) {
+							echo ' landscape';
+						} else if($work_width === $work_height){
+							echo ' square';
+						} else{echo ' portrait';} 
+				} } ?>" href="<?php the_permalink(); ?>">
 				<img 
 					data-mobile-height="<?php echo $image_l[2]; ?>"
 					data-srcset="<?php echo $image_l[0]; ?> 600w, <?php echo $image_m[0]; ?> 400w"
-					data-ie="<?php echo $image_m[0]; ?>"
+					data-ie="<?php echo $image_l[0]; ?>"
 					data-sizes="(max-width: 767px) and (min-width: 490px) 600px, 400px"
 					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 					class="attachment-post-thumbnail size-post-thumbnail wp-post-image lazyload"
 					alt="<?php the_title(); ?>">
+				<noscript>
+					<img 
+						data-srcset="<?php echo $image_l[0]; ?> 400w"
+						sizes="400px"
+						src="<?php echo $image_l[0]; ?>"
+						class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-js-thumb">
+				</noscript>
+				
 			</a>
+			<?php endif; ?>
 			<figcaption>			
 				<p class="work-caption__artist">
 				<?php if( $artist ): ?>
@@ -126,18 +142,20 @@ if($dimensions) {
 					<a href="<?php the_permalink()?>"><?php the_title(); ?></a>
 				</p>
 				<p class="work-caption__date"><?php the_field('year'); ?></p>
-				<p>
+				<p class="work-caption__dimensions">
 				<?php 
 					$dimensions = get_field('dimensions'); 
 					if($dimensions) {
 						echo '<br>dimensions: ' . $dimensions;
-						echo '<br>' . 'height: ' .  $work_height . '<br>' . 'width: ' . $work_width . '<br> ';
-						if( $work_width > $work_height){
-							echo ' landscape';
-						} else if($work_width === $work_height){
-							echo ' square';
-						}else{
-							echo ' portrait';
+						if($work_height && $work_width) {
+							echo '<br>' . 'height: ' .  $work_height . '<br>' . 'width: ' . $work_width . '<br> ';
+							if( $work_width > $work_height){
+								echo ' landscape';
+							} else if($work_width === $work_height){
+								echo ' square';
+							}else{
+								echo ' portrait';
+							}
 						}
 					}
 				?>
@@ -228,4 +246,4 @@ if($dimensions) {
 
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php endif; ?>
-<script src="/wp-content/themes/felios/public/io_lazy.bundle.js"></script>
+

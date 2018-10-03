@@ -32,6 +32,7 @@
             
 
 .main-navigation {
+    position: relative;
     ul {
         list-style: none;
         display: flex;
@@ -64,7 +65,21 @@
     }
 }
 
+@media (max-width: 960px) {
+    .main-navigation {
+        ul {
+            //flex-direction: column;
+            flex-wrap: wrap;
+            padding: 0;
+            li {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
 .page-header {
+    position: relative;
     h1 {
         text-align: center;
         @include archive-header;
@@ -92,24 +107,51 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            width: 100%;
+            //width: 100%;
             margin: 0;
             padding: 0;
             position: absolute;
             left: 50%;
             transform: translate(-50%);
             list-style: none;
-            margin-top: 1rem;
+            line-height: 1.1;
+            margin-top: 20px;
             li {
                 a {
                     @include taxonomy-links;
                     font-size: 15px;
                 }
             }
-            
+        }
+    }
+    .layout-switch {
+        position: absolute;
+        display: flex; 
+        right:20%;
+        bottom: 0;
+        button {
+            @include button--circle__switch;
+            padding: 0;
+            margin-right: 20px;
+            &.selected {
+                background-color: $black;
+                color: white;
+            }
+        }
+        .layout-switch--list {
+            font-size: 24px;
         }
     }
 }
+
+@media (max-width: 960px) {
+    .page-header  {
+        &#menu-kind {
+            flex-direction: column;
+        }
+    }
+}
+   
 
 
 /*--------------------------------------------------------------
@@ -172,7 +214,7 @@
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+	display: none;
 }
 
 @media screen and (min-width: 37.5em) {

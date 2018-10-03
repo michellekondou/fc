@@ -9,6 +9,13 @@
 
 get_header();
 
+
+// if ( isset($_COOKIE['layout']) ) {
+// 	echo 'cookie is set';
+// } else {
+// 	echo 'cookie not set';
+// }
+
 ?>
 
 	<div id="primary" class="content-area">
@@ -21,7 +28,6 @@ get_header();
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
 				//the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
-				<?php if ( get_post_type() == 'collection' ) : ?>
 				<ul class="nav nav-pills">
 					<li class="dropdown">
 						<a class="dropdown-toggle" id="drop-kind" role="button" data-toggle="dropdown" href="#"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'kind'; } else { echo 'είδος';} ?> <b class="caret"></b></a>
@@ -41,10 +47,14 @@ get_header();
 						</a>
 					</li>
 				</ul>
-				<?php endif; ?>
+				
+				<div class="layout-switch">
+					<button type="button" class="button--circle layout-switch--grid selected">[]</button>
+					<button type="button" class="button--circle layout-switch--list">=</button>
+				</div>
 			</header><!-- .page-header -->
 
-			<div class="horizontal-grid">
+			<div class="horizontal-grid visually-hidden">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -63,7 +73,9 @@ get_header();
 			
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
+<script src="/wp-content/themes/felios/public/polyfills.bundle.js"></script>
+<script src="/wp-content/themes/felios/public/io_lazy.bundle.js"></script>
+<script src="/wp-content/themes/felios/public/layout_switch.bundle.js"></script>
 <?php
 get_sidebar();
 get_footer();
