@@ -13,7 +13,7 @@ list_button.addEventListener('click', ((e) => {
     layout.classList.add('list-layout')
     //set layout=list in local storage
     localStorage.setItem('layout', 'list');
-    console.log(localStorage.getItem('layout'))
+    //console.log(localStorage.getItem('layout'))
 }))
 
 grid_button.addEventListener('click', ((e) => {
@@ -21,11 +21,11 @@ grid_button.addEventListener('click', ((e) => {
     //remove and clear local storage
     localStorage.removeItem('layout');
     localStorage.clear();
-    console.log('storage cleared')
+    //console.log('storage cleared')
 }))
 
 if(localStorage.getItem('layout')) {
-    console.log('local storage set: ',localStorage.getItem('layout'))
+    //console.log('local storage set: ',localStorage.getItem('layout'))
     layout.classList.add('list-layout')
 }
 

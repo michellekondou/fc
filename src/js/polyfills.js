@@ -778,16 +778,15 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
 
 window.addEventListener('load', () => {
     //make sure all assets have loaded first so page doesn't jump aroung
-    console.log('all assets loaded')
+    //console.log('all assets loaded')
     var scrollPos = 0;
     var elemTrigger = document.querySelector('.main-navigation')
-    var navPositionFromTop = elemTrigger.getBoundingClientRect().top;
     var documentTop = document.body.getBoundingClientRect().top;
     if (documentTop <= -60) {
         elemTrigger.classList.add('sticky') 
         elemTrigger.classList.add('slide-down')
     }
-console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop)
+    //console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop)
     // adding scroll event
     window.addEventListener('scroll', () => {
         var navPositionFromTop = elemTrigger.getBoundingClientRect().top;
@@ -795,14 +794,16 @@ console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop
         //console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop)
         // detects new state and compares it with the new one
         if (documentTop > scrollPos) {
-            console.log('UP')
+            //console.log('UP')
             if (documentTop >= 20) { //distance of menu from top with padding
                 elemTrigger.classList.remove('sticky')
+                elemTrigger.classList.remove('slide-down')
             }
         } else {
-            console.log('DOWN')
-            if (navPositionFromTop <= 0) { //15 is the menu padding top
+            //console.log('DOWN')
+            if (navPositionFromTop <= -60) { //15 is the menu padding top
                 elemTrigger.classList.add('sticky')
+                elemTrigger.classList.add('slide-down')
             }
         }
 
