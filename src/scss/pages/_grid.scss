@@ -22,6 +22,7 @@
 		.post-thumbnail {
 			position: relative;
 			display: flex;
+			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
 			width: 330px;
@@ -124,6 +125,7 @@
 
 .vertical-grid {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	margin-bottom: 3em;
 }

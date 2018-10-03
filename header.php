@@ -42,6 +42,17 @@
 				'menu_id'        => 'primary-menu',
 			) );
 			?>
+			<div class="newsletter-search">
+				<a href="#">
+					<i class="icon newsletter"></i>
+				</a>
+				<a href="#">
+					<i class="icon search"></i>
+				</a>
+			</div>
+			<div class="widget-area">
+				<?php dynamic_sidebar( 'sidebar-1' ); ?>
+			</div>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

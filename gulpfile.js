@@ -54,7 +54,7 @@ gulp.task('sprites', function () {
 })
 
 // // 2. The sprite.svg gets copied first in the compiled (for development) and then in the dist/svg folder (for production) (the scss get compiled into app.css)
-gulp.task('copy-svg', ['sprites'], function () {
+gulp.task('copy-svg', function () {
     return gulp.src(['src/scss/svg/*.svg'])
         .pipe(revReplace())
         .pipe(gulp.dest('svg/'))

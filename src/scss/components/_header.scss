@@ -21,6 +21,9 @@
     line-height: 1.1;
     margin-top: 60px;
     margin-bottom: 60px;
+    transition: transform 300ms ease-in-out;
+    transform: translateY(0);
+    width: 100%;
     .site-branding {
         margin-bottom: 50px;
     }

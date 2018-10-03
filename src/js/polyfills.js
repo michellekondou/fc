@@ -773,6 +773,30 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
 
 }(window, document));
 
+const header = document.querySelector('.site-header');
+const pageWrap = document.querySelector('#page.site');
+var lastScrollTop = 0;
+
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
+
+function onScroll() {
+  let currScrollTop = pageWrap.scrollTop;
+  let isScrollingDown = currScrollTop > lastScrollTop;
+  let isHeaderVisible = currScrollTop < header.height;
+
+  //header.classList.toggle('is-hidden', isScrollingDown && !isHeaderVisible);
+  lastScrollTop = currScrollTop;
+}
+
+pageWrap.addEventListener('scroll', debounce(onScroll, 16));
+
 
 
 
