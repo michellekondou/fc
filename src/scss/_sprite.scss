@@ -1,0 +1,146 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("svg/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 36.4em 34em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../svg/sprite.png");
+}
+
+
+
+  .icon.svg-arrow_left:before {
+      background-position: 0em 0em;
+      width: 1.2em;
+      height: 2em;
+  }
+
+
+
+
+  .icon.svg-arrow_right:before {
+      background-position: 0em -2em;
+      width: 1.2em;
+      height: 2em;
+  }
+
+
+
+
+  .icon.svg-facebook:before {
+      background-position: 0em -4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.svg-language-selection:before {
+      background-position: 0em -6.4em;
+      width: 2.8em;
+      height: 2.8em;
+  }
+
+
+
+
+  .icon.svg-list:before {
+      background-position: 0em -9.2em;
+      width: 3.2em;
+      height: 3.2em;
+  }
+
+
+
+
+  .icon.svg-list_idle:before {
+      background-position: 0em -12.4em;
+      width: 3.2em;
+      height: 3.2em;
+  }
+
+
+
+
+  .icon.svg-logo:before {
+      background-position: 0em -15.6em;
+      width: 36.4em;
+      height: 2em;
+  }
+
+
+
+
+  .icon.svg-logo-footer:before {
+      background-position: 0em -17.6em;
+      width: 23.4em;
+      height: 1.4em;
+  }
+
+
+
+
+  .icon.svg-logo-outlined:before {
+      background-position: 0em -19em;
+      width: 36.4em;
+      height: 2em;
+  }
+
+
+
+
+  .icon.svg-newsletter:before {
+      background-position: 0em -21em;
+      width: 2em;
+      height: 1.6em;
+  }
+
+
+
+
+  .icon.svg-search:before {
+      background-position: 0em -22.6em;
+      width: 1.8em;
+      height: 1.8em;
+  }
+
+
+
+
+  .icon.svg-share:before {
+      background-position: 0em -24.4em;
+      width: 3.2em;
+      height: 3.2em;
+  }
+
+
+
+
+  .icon.svg-thumbnails:before {
+      background-position: 0em -27.6em;
+      width: 3.2em;
+      height: 3.2em;
+  }
+
+
+
+
+  .icon.svg-thumbnails_idle:before {
+      background-position: 0em -30.8em;
+      width: 3.2em;
+      height: 3.2em;
+  }
+
+
+
+
+

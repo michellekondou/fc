@@ -22,9 +22,6 @@
 			<nav>
 				<i class="icon facebook"></i>
 				<i class="icon newsletter"></i>
-				<svg class="icon svg-arrow_right">
-                    <use xlink:href="#svg-arrow_right" />
-                </svg>
 			</nav>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
