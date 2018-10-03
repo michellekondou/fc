@@ -46,7 +46,6 @@ gulp.task('sass', function () {
 gulp.task('sprites', function () {
     return gulp.src('src/svg/*.svg')
         .pipe(svgSprite({
-            svgId: "svg-%f",
             cssFile: '_sprite.scss',
             svgPath: 'svg/sprite.svg'
         }))
