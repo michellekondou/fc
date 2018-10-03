@@ -773,29 +773,90 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
 
 }(window, document));
 
-const header = document.querySelector('.site-header');
-const pageWrap = document.querySelector('#page.site');
-var lastScrollTop = 0;
+// Initial state
 
-function debounce(func, wait) {
-  let timeout;
-  return function(...args) {
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
 
-function onScroll() {
-  let currScrollTop = pageWrap.scrollTop;
-  let isScrollingDown = currScrollTop > lastScrollTop;
-  let isHeaderVisible = currScrollTop < header.height;
+window.addEventListener('load', () => {
+    //make sure all assets have loaded first so page doesn't jump aroung
+    console.log('all assets loaded')
+    var scrollPos = 0;
+    var elemTrigger = document.querySelector('.main-navigation')
+    var navPositionFromTop = elemTrigger.getBoundingClientRect().top;
+    var documentTop = document.body.getBoundingClientRect().top;
+    if (documentTop <= -60) {
+        elemTrigger.classList.add('sticky') 
+        elemTrigger.classList.add('slide-down')
+    }
+console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop)
+    // adding scroll event
+    window.addEventListener('scroll', () => {
+        var navPositionFromTop = elemTrigger.getBoundingClientRect().top;
+        var documentTop = document.body.getBoundingClientRect().top;
+        //console.log('documentTop', documentTop, 'navPositionFromTop', navPositionFromTop)
+        // detects new state and compares it with the new one
+        if (documentTop > scrollPos) {
+            console.log('UP')
+            if (documentTop >= 20) { //distance of menu from top with padding
+                elemTrigger.classList.remove('sticky')
+            }
+        } else {
+            console.log('DOWN')
+            if (navPositionFromTop <= 0) { //15 is the menu padding top
+                elemTrigger.classList.add('sticky')
+            }
+        }
 
-  //header.classList.toggle('is-hidden', isScrollingDown && !isHeaderVisible);
-  lastScrollTop = currScrollTop;
-}
+        // saves the new position for iteration.
+        scrollPos = documentTop
+    })
+})
 
-pageWrap.addEventListener('scroll', debounce(onScroll, 16));
+
+// const animateHTML = function () {
+//     function init() {
+//         addEventHandlers();
+//         checkPosition();
+//     }
+//     function addEventHandlers() {
+        
+//         window.addEventListener('scroll', checkPosition);
+//         window.addEventListener('resize', init);
+//     }
+//     function checkPosition() {
+//         var lastScrollTop = 0;
+//         var st = window.pageYOffset || document.documentElement.scrollTop;
+
+//         let elemsVisible = document.querySelectorAll('.scroll-visible')
+//         let elemsHidden = document.querySelectorAll('.scroll-hidden')
+//         let elemTrigger = document.querySelector('.main-navigation')
+//         let positionFromTop = elemTrigger.getBoundingClientRect().top;
+//         //console.log(lastScrollTop, elemTrigger, positionFromTop, st)
+
+//         if (st <= lastScrollTop) {
+//             // downscroll code
+//             console.log(st, lastScrollTop, 'going DOWN')
+//             elemTrigger.classList.remove('sticky')
+//         } else {
+//             console.log('window.pageYOffset: ', st, 'lastScrollTop: ', lastScrollTop, 'going ...')
+//         }
+//         //lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+//         lastScrollTop = st;
+        
+//         return st;
+
+//         if (positionFromTop < 20) {
+//             elemTrigger.classList.add('sticky')
+//         } else {
+//             elemTrigger.classList.remove('sticky')
+//         }
+//     }
+//     return {
+//         init: init
+//     };
+// };
+
+// animateHTML().init();
+
 
 
 

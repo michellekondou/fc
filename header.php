@@ -34,7 +34,8 @@
 			</h1>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
+	</header><!-- #masthead -->
+	<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'felios' ); ?></button>
 			<?php
 			wp_nav_menu( array(
@@ -54,6 +55,5 @@
 				<?php dynamic_sidebar( 'sidebar-1' ); ?>
 			</div>
 		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

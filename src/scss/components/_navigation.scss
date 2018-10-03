@@ -36,6 +36,26 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    transform: translateY(-15px); //to enable sliding down when page is loaded and menu is not visible
+    top: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px; //same with padding top plus 5 
+    margin-bottom: 30px;
+    &.sticky {
+        position: fixed;
+        top: 15px;
+        background-color: white;
+        z-index: 2;
+    }
+    &.slide-down {
+        top: 0;
+        transition: transform 0.5s ease-in-out;
+        transform: translateY(0);
+        transform-origin: bottom;
+    }
     ul {
         list-style: none;
         display: flex;

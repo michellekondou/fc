@@ -73,9 +73,7 @@ get_header();
 			
 		</main><!-- #main -->
 	</div><!-- #primary -->
-<script src="/wp-content/themes/felios/public/polyfills.bundle.js"></script>
-<script src="/wp-content/themes/felios/public/io_lazy.bundle.js"></script>
-<script src="/wp-content/themes/felios/public/layout_switch.bundle.js"></script>
+
 <?php
 get_sidebar();
 get_footer();

@@ -20,12 +20,11 @@
     flex-wrap: wrap;
     line-height: 1.1;
     margin-top: 60px;
-    margin-bottom: 60px;
-    transition: transform 300ms ease-in-out;
-    transform: translateY(0);
+    margin-bottom: 0;
     width: 100%;
+    z-index: 2;
     .site-branding {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
     .site-title {
         margin: 0;
