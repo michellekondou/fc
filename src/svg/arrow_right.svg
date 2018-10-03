@@ -4,17 +4,17 @@
     <title>arrow_right</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <path d="M6.99812983,21.015 C7.48812983,21.505 8.27812983,21.505 8.76812983,21.015 L17.0781298,12.705 C17.4681298,12.315 17.4681298,11.685 17.0781298,11.295 L8.76812983,2.985 C8.27812983,2.495 7.48812983,2.495 6.99812983,2.985 C6.50812983,3.475 6.50812983,4.265 6.99812983,4.755 L14.2381298,12.005 L6.98812983,19.255 C6.50812983,19.735 6.50812983,20.535 6.99812983,21.015 Z" id="path-1"></path>
+        <path d="M6.99812983,21.015 C7.48812983,21.505 8.27812983,21.505 8.76812983,21.015 L17.0781298,12.705 C17.4681298,12.315 17.4681298,11.685 17.0781298,11.295 L8.76812983,2.985 C8.27812983,2.495 7.48812983,2.495 6.99812983,2.985 C6.50812983,3.475 6.50812983,4.265 6.99812983,4.755 L14.2381298,12.005 L6.98812983,19.255 C6.50812983,19.735 6.50812983,20.535 6.99812983,21.015 Z" id="path-arrow-right"></path>
     </defs>
     <g id="felios" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="artwork-landscape" transform="translate(-1379.000000, -763.000000)">
             <g id="icon/navigation/arrow_forward_ios_24px" transform="translate(1373.000000, 761.000000)">
-                <mask id="mask-2" fill="white">
-                    <use xlink:href="#path-1"></use>
+                <mask id="mask-arrow-right" fill="white">
+                    <use xlink:href="#path-arrow-right"></use>
                 </mask>
                 <g fill-rule="nonzero"></g>
-                <g id="✱-/-Color-/-Icons-/-Black-/-Active" mask="url(#mask-2)" fill="#000000" fill-opacity="0.87" fill-rule="evenodd">
-                    <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
+                <g id="✱-/-Color-/-Icons-/-Black-/-Active" mask="url(#mask-arrow-right)" fill="#000000" fill-opacity="0.87" fill-rule="evenodd">
+                    <rect id="Rectangle-arrow-right" x="0" y="0" width="24" height="24"></rect>
                 </g>
             </g>
         </g>

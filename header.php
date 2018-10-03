@@ -29,8 +29,7 @@
 		<div class="site-branding">
 			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<?php bloginfo( 'name' ); ?>
-					<i class="icon logo-outlined" title="The Sotiris Felios Collection"></i>
+					<i class="icon logo-outlined" title="<?php bloginfo( 'name' ); ?>"></i>
 				</a>
 			</h1>
 		</div><!-- .site-branding -->

@@ -44,8 +44,10 @@ gulp.task('sass', function () {
 // 1. Gathers the files in the src/svg directory and creates
 // a sprite.svg and a _sprite.scss
 gulp.task('sprites', function () {
-    return gulp.src('src/svg/*.svg')
+    return gulp.src('src/svg-test/*.svg')
         .pipe(svgSprite({
+            mode: "symbols",
+            svgId: "svg-%f",
             cssFile: '_sprite.scss',
             svgPath: 'svg/sprite.svg'
         }))

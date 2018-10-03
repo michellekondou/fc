@@ -72,6 +72,9 @@
 			.work-caption__date {
 				@include work_caption_date;
 			}
+			.work-caption__dimensions {
+				display: none;
+			}
 		} 
 	}
 	&.list-layout {

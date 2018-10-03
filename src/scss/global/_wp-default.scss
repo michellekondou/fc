@@ -559,6 +559,7 @@ input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
+	outline: 1px solid #ccc;
 }
 
 input[type="text"],

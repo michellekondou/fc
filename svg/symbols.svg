@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+	
+		<symbol id="svg-arrow_right" viewBox="0 0 12 20">
+			<title>arrow_right</title><defs><path d="M6.998 21.015c.49.49 1.28.49 1.77 0l8.31-8.31a.996.996 0 0 0 0-1.41l-8.31-8.31a1.25 1.25 0 0 0-1.77 0 1.25 1.25 0 0 0 0 1.77l7.24 7.25-7.25 7.25c-.48.48-.48 1.28.01 1.76z" id="a"></path></defs><g transform="translate(-6 -2)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path d="M0 0h24v24H0z" mask="url(#b)" fill="#000" fill-opacity=".87"></path></g>
+		</symbol>
+	
+</svg>
