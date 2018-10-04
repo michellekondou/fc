@@ -163,3 +163,10 @@ ul {
 	// margin-top: 250px;
 	z-index: 1;
 }
+
+.rotated,
+i.rotated:before {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transition: 300ms ease all;
+}

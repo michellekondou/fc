@@ -17,10 +17,7 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				//the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
+				<h1 class="page-title"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'WORKS'; } else { echo 'ΕΡΓΑ';} ?></h1>
 				<div class="collection-submenu">
 					<ul class="nav nav-pills">
 						<li class="dropdown">
@@ -30,8 +27,8 @@ get_header();
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-target="drop-theme" role="button" data-toggle="dropdown" href="#"><span><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'theme'; } else { echo 'κατηγορία';} ?></span>  <i class="icon arrow_left"></i></a>
-							<ul id="menu-theme" class="dropdown-menu theme" role="menu" aria-labelledby="drop-theme" data-source="drop-theme">
+							<a class="dropdown-toggle active" data-target="drop-theme" role="button" data-toggle="dropdown" href="#"><span><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'theme'; } else { echo 'κατηγορία';} ?></span>  <i class="icon arrow_left"></i></a>
+							<ul id="menu-theme" class="dropdown-menu theme open" role="menu" aria-labelledby="drop-theme" data-source="drop-theme">
 								<?php if(function_exists('themelist')) { themelist(); } ?>
 							</ul>
 						</li>
@@ -72,3 +69,4 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
+

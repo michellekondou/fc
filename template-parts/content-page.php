@@ -66,25 +66,22 @@ if(ICL_LANGUAGE_CODE == 'en') {
 $dimensions = get_field('dimensions'); 
 if($dimensions) {
 	$d_float = str_replace(",",".",$dimensions);
-	$d_arr = explode("x", $d_float);
-	if(count($d_arr) > 0) {
+	$d_float = mb_convert_case($dimensions, MB_CASE_LOWER, "UTF-8");//convert X to x
+	$d_arr = preg_split( "/(x|χ)/", $d_float);//split dimensions array on either el or en x
+	//var_dump($d_arr);
+	if(count($d_arr) > 1) {
 		if($d_arr[1]) {
 			$work_width = floatval($d_arr[1]);
 		} else {
-			$work_width = 'not set';
+			$work_width = null;
 		}
 		if($d_arr[0]) {
 			$work_height = floatval($d_arr[0]);
 		} else {
-			$work_height = 'not set';
+			$work_height = null;
 		}
-	} else {
-		echo 'all dimensions not set';
-	}
-	
+	} 
 }
-
-
 
 ?>
 <?php if ( is_archive() ) : ?>
@@ -98,12 +95,35 @@ if($dimensions) {
 			<a 
 				class="post-thumbnail<?php 
 				if($dimensions) {
-					if($work_height && $work_width) {
-						if( $work_width > $work_height) {
+					if(isset($work_height) && isset($work_width)) {
+						if( $work_width > $work_height ) {
 							echo ' landscape';
+							if( $work_width >= 150 ) {
+								echo ' large';
+							} else if ( $work_width <= 30 ) {
+								echo ' small';
+							} else {
+								echo ' medium';
+							}
 						} else if($work_width === $work_height){
 							echo ' square';
-						} else{echo ' portrait';} 
+							if( $work_height >= 150 || $work_width >= 150 ) {
+								echo ' large';
+							} else if ( $work_height <= 30 ||  $work_width <= 30 ) {
+								echo ' small';
+							} else {
+								echo ' medium';
+							}
+						} else{
+							echo ' portrait';
+							if( $work_height >= 150 ) {
+								echo ' large';
+							} else if ( $work_height <= 30 ) {
+								echo ' small';
+							} else {
+								echo ' medium';
+							}
+						} 
 				} } ?>" href="<?php the_permalink(); ?>">
 				<img 
 					data-mobile-height="<?php echo $image_l[2]; ?>"
@@ -146,16 +166,36 @@ if($dimensions) {
 				<?php 
 					$dimensions = get_field('dimensions'); 
 					if($dimensions) {
-						echo '<br>dimensions: ' . $dimensions;
-						if($work_height && $work_width) {
-							echo '<br>' . 'height: ' .  $work_height . '<br>' . 'width: ' . $work_width . '<br> ';
-							if( $work_width > $work_height){
+						echo $dimensions;
+						if(isset($work_height) && isset($work_width)) {
+							if( $work_width > $work_height ) {
 								echo ' landscape';
+								if( $work_width >= 150 ) {
+									echo ' large';
+								} else if ( $work_width <= 30 ) {
+									echo ' small';
+								} else {
+									echo ' medium';
+								}
 							} else if($work_width === $work_height){
 								echo ' square';
-							}else{
+								if( $work_height >= 150 || $work_width >= 150 ) {
+									echo ' large';
+								} else if ( $work_height <= 30 ||  $work_width <= 30 ) {
+									echo ' small';
+								} else {
+									echo ' medium';
+								}
+							} else{
 								echo ' portrait';
-							}
+								if( $work_height >= 150 ) {
+									echo ' large';
+								} else if ( $work_height <= 30 ) {
+									echo ' small';
+								} else {
+									echo ' medium';
+								}
+							} 
 						}
 					}
 				?>

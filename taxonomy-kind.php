@@ -17,30 +17,36 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				//the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-				<ul class="nav nav-pills">
-					<li class="dropdown">
-						<a class="dropdown-toggle" id="drop-kind" role="button" data-toggle="dropdown" href="#"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'kind'; } else { echo 'είδος';} ?> <b class="caret"></b></a>
-						<ul id="menu-kind" class="dropdown-menu kind" role="menu" aria-labelledby="drop-kind">
-							<?php if(function_exists('kindlist')) { kindlist(); } ?>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" id="drop-theme" role="button" data-toggle="dropdown" href="#"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'theme'; } else { echo 'θέμα';} ?> <b class="caret"></b></a>
-						<ul id="menu-theme" class="dropdown-menu theme" role="menu" aria-labelledby="drop-theme">
-							<?php if(function_exists('themelist')) { themelist(); } ?>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<?php if(ICL_LANGUAGE_CODE == 'en') { echo 'shuffle'; } else { echo 'ανακάτεμα';} ?>
-					</li>
-				</ul>
+				<h1 class="page-title"><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'WORKS'; } else { echo 'ΕΡΓΑ';} ?></h1>
+				<div class="collection-submenu">
+					<ul class="nav nav-pills">
+						<li class="dropdown">
+							<a class="dropdown-toggle active" role="button" data-target="drop-kind" href="#"><span><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'kind'; } else { echo 'είδος';} ?></span> <i class="icon arrow_left"></i></a>
+							<ul id="menu-kind" class="dropdown-menu kind open" role="menu" aria-labelledby="drop-kind" data-source="drop-kind">
+								<?php if(function_exists('kindlist')) { kindlist(); } ?>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-target="drop-theme" role="button" data-toggle="dropdown" href="#"><span><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'theme'; } else { echo 'κατηγορία';} ?></span>  <i class="icon arrow_left"></i></a>
+							<ul id="menu-theme" class="dropdown-menu theme" role="menu" aria-labelledby="drop-theme" data-source="drop-theme">
+								<?php if(function_exists('themelist')) { themelist(); } ?>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" id="shuffle" role="button" data-toggle="dropdown" href="#">
+								<span><?php if(ICL_LANGUAGE_CODE == 'en') { echo 'shuffle'; } else { echo 'τυχαία';} ?></span>
+							</a>
+						</li>
+					</ul>
+					
+					<div class="layout-switch">
+						<button type="button" class="button--circle layout-switch--grid selected">[]</button>
+						<button type="button" class="button--circle layout-switch--list">=</button>
+					</div>
+				</div>
 			</header><!-- .page-header -->
 
-			<div class="horizontal-grid">
+			<div class="horizontal-grid visually-hidden">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -63,3 +69,4 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
+
