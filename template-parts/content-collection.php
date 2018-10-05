@@ -156,7 +156,6 @@ if($dimensions) {
                     if( $image ): ?>
 						
                         <figure class="magnifiable">
-                            <a data-size="<?php echo $image['sizes']['large-width'].'x'.$image['sizes']['large-height'] ?>" href="<?php echo $image['sizes']['large']; ?>" title="<?php if ($image['caption']) { echo $image['caption']; } else { echo the_title(); } ?>">
                             <a class="post-thumbnail<?php 
                             if($dimensions) {
                                 if(isset($work_height) && isset($work_width)) {
