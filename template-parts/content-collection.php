@@ -268,4 +268,4 @@ if($dimensions) {
     get_template_part('template-parts/photoswipe');
 ?>
 
-<script src="<?php echo esc_url( site_url( '/' ) . 'wp-content/themes/pop/src/js/photoswipe.js' ); ?>"></script>
+<script src="<?php echo esc_url( site_url( '/' ) . 'wp-content/themes/felios/public/photoswipe.bundle.js' ); ?>"></script>

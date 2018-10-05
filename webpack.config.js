@@ -8,7 +8,8 @@ module.exports = {
         polyfills: ['./src/js/polyfills.js'], 
         io_lazy: ['./src/js/iolazy.js'],
         wp_utils: ['./src/js/wp-utils.js'],
-        collection: ['./src/js/collection.js']
+        collection: ['./src/js/collection.js'],
+        photoswipe: ['./src/js/photoswipe.js']
     },
     module: {
         rules: [
