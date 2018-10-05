@@ -32,13 +32,15 @@ if (list_button !== null) {
         localStorage.clear()
         //console.log('storage cleared')
     }))
-}
 
-if(localStorage.getItem('layout')) {
-    //console.log('local storage set: ',localStorage.getItem('layout'))
-    layout.classList.add('list-layout')
-    grid_button.classList.remove('selected')
-    list_button.classList.add('selected')
+
+    if(localStorage.getItem('layout')) {
+        //console.log('local storage set: ',localStorage.getItem('layout'))
+        layout.classList.add('list-layout')
+        grid_button.classList.remove('selected')
+        list_button.classList.add('selected')
+    }
+
 }
 
 //toggle taxnomomy submenu
