@@ -12,27 +12,27 @@ layout.classList.add('fade-in')
 //set local storage
 if (list_button !== null) {
     console.log(list_button)
-}
-console.log(list_button, typeof list_button)
-list_button.addEventListener('click', ((e) => {
-    grid_button.classList.remove('selected')
-    //add list class to collection archive container
-    e.target.classList.add('selected')
-    layout.classList.add('list-layout')
-    //set layout=list in local storage
-    localStorage.setItem('layout', 'list')
-    //console.log(localStorage.getItem('layout'))
-}))
 
-grid_button.addEventListener('click', ((e) => {
-    list_button.classList.remove('selected')
-    e.target.classList.add('selected')
-    layout.classList.remove('list-layout')
-    //remove and clear local storage
-    localStorage.removeItem('layout')
-    localStorage.clear()
-    //console.log('storage cleared')
-}))
+    list_button.addEventListener('click', ((e) => {
+        grid_button.classList.remove('selected')
+        //add list class to collection archive container
+        e.target.classList.add('selected')
+        layout.classList.add('list-layout')
+        //set layout=list in local storage
+        localStorage.setItem('layout', 'list')
+        //console.log(localStorage.getItem('layout'))
+    }))
+
+    grid_button.addEventListener('click', ((e) => {
+        list_button.classList.remove('selected')
+        e.target.classList.add('selected')
+        layout.classList.remove('list-layout')
+        //remove and clear local storage
+        localStorage.removeItem('layout')
+        localStorage.clear()
+        //console.log('storage cleared')
+    }))
+}
 
 if(localStorage.getItem('layout')) {
     //console.log('local storage set: ',localStorage.getItem('layout'))
