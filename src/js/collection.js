@@ -10,7 +10,10 @@ layout.classList.remove('visually-hidden')
 layout.classList.add('fade-in')
 
 //set local storage
-
+if (list_button.length > 0) {
+    console.log(list_button)
+}
+console.log(list_button, typeof list_button)
 list_button.addEventListener('click', ((e) => {
     grid_button.classList.remove('selected')
     //add list class to collection archive container
