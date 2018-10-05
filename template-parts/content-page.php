@@ -86,10 +86,19 @@ if($dimensions) {
 ?>
 <?php if ( is_archive() ) : ?>
 	<?php if ( get_post_type() == 'artists' ) : ?>
-		<h3 class="artist-name">
-			<a href="<?php the_permalink()?>"><?php the_title(); ?></a>
-		</h3>
-	<?php elseif ( get_post_type() == 'collection' ) : ?>
+		<?php
+			// Check the current letter is the same that the first of the title
+			$artist_extra = isset($a_arr[2]) ? ' ' . $a_arr[2] : '';
+			if($alpha_letter != $letter_)
+			{
+				echo ($alpha_letter != '') ? '' : '';
+				$alpha_letter = $letter_;
+				echo '<h4>'.$letter_.'</h4>';  
+			}
+			echo '<h3 class="artist-name"><a href="'.get_permalink().'">'. $artist_first_name . $artist_extra . '  ' . $artist_last_name . '</a></h3>';
+		?>	
+	<?php endif; ?>
+	<?php if ( get_post_type() == 'collection' ) : ?>
 		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php if ( has_post_thumbnail() ) : ?>
 			<a 
@@ -150,8 +159,8 @@ if($dimensions) {
 					<?php setup_postdata($post); 
 					$artist_name = get_the_title();
 					$a_arr = explode(" ",$artist_name);
-					$artist_first_name = $a_arr[1];
-					$artist_last_name = $a_arr[0];
+					$artist_first_name = isset($a_arr[1]) ? $a_arr[1] : '';
+					$artist_last_name = isset($a_arr[0]) ? $a_arr[0] : '';
 					?>
 						<a href="<?php the_permalink(); ?>" class="artist-name"><?php echo $artist_first_name . '  ' . $artist_last_name;  ?></a>
 					<?php endforeach; ?>

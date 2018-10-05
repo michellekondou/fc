@@ -1,10 +1,10 @@
 /*--------------------------------------------------------------
 ## Artworks
 --------------------------------------------------------------*/
-.artwork-details p {
-	line-height: 1.1;
-	margin: 0;
-	margin-bottom: 5px;
+
+
+.sticky-state {
+	padding-top: 120px; //sos write documentation for this
 }
 
 .horizontal-grid {
@@ -98,21 +98,18 @@
 				display: none;
 			}
 			.work-caption__date {
-				text-align: right;
-			}
-			.work-caption__title {
-				@include serif-italic;
+				text-align: left;  
 			}
 			figcaption {
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: 1.5fr 2.5fr 0.5fr;
 				margin-top: 0;
 				padding: 8px 0 10px;
     			border-top: 1px solid $black;
 				p {
 					margin: 0;
-					font-size: 18px;
-					line-height: 1.1;
+					font-size: 17px;
+					line-height: 1.4;
 				}
 			}
 		}
@@ -135,7 +132,6 @@
 
 .vertical-grid {
 	display: flex;
-	flex-wrap: wrap;
 	flex-direction: row;
 	margin-bottom: 3em;
 }
@@ -162,9 +158,11 @@
 }
 
 .artist-name {
-	font-weight: normal;
+	@include serif-bold;
 	font-size: 17px;
 	margin-top: 0;
+	margin-bottom: 5px;
+	text-align: center;
 }
 
 .artist-name a:hover {
@@ -175,9 +173,25 @@
 	text-decoration: underline;
 }
 
-.columns {
-	columns: 4 auto;
+.post-type-archive-artists {
+	.site-main {
+		margin-top: 60px;
+	}
+	.columns {
+		columns: 4 auto;
+		max-width: 1110px;
+		margin: 0 auto;
+		h4 {
+			@include serif-bold;
+			font-size: 90px;
+			text-align: center;
+			line-height: 1;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+	}
 }
+
 
 @media (max-width: 1336px) {
     .horizontal-grid {
@@ -258,4 +272,19 @@
 
 	/*use separate stylesheets for IE9 and below*/
 
+}
+
+.post-type-archive-exhibitions,
+.post-type-archive-events,
+.error404,
+.single-artists,
+.single-exhibitions,
+.single-events,
+.page-template-default,
+.single-post {
+	.site-main {
+		max-width: 960px;
+		margin: 0 auto;
+		margin-top: 60px;
+	}
 }

@@ -67,11 +67,10 @@
 }
 
 @mixin work_caption_title{
-    @include serif-regular;
-    font-size: 14px;
+    @include serif-italic;
+    font-size: 15px;
     color: $black;
-    line-height: 1.1;
-    font-style: italic;
+    line-height: 1.4;
 }
 
 @mixin work_caption_date {

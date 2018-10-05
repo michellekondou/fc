@@ -22,6 +22,7 @@
         p {
             @include sans-regular;
             font-size: 10px;
+            letter-spacing: 1px;
             margin:0; 
         }
     }

@@ -834,3 +834,5 @@ add_action( 'wp_head', 'felios_javascript_detection', 0 );
  
 //add_action('wp_ajax_layoutSwitch', 'layout_switch_ajax_handler'); // wp_ajax_{action}
 //add_action('wp_ajax_nopriv_layoutSwitch', 'layout_switch_ajax_handler'); // wp_ajax_nopriv_{action}
+
+
