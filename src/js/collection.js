@@ -10,7 +10,7 @@ layout.classList.remove('visually-hidden')
 layout.classList.add('fade-in')
 
 //set local storage
-if (list_button.length > 0) {
+if (list_button !== null) {
     console.log(list_button)
 }
 console.log(list_button, typeof list_button)
