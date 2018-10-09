@@ -243,7 +243,14 @@ $artist_last_name = isset($a_arr[0]) ? $a_arr[0] : '';
                 <?php endif; ?>
                 <?php endforeach; ?>
                 <?php wp_reset_postdata(); ?>
-                <div class="main-carousel" data-flickity='{ "cellAlign": "center", "pageDots": false, "lazyLoad": true, "imagesLoaded": true, "autoPlay": 6000, "pauseAutoPlayOnHover": false, "arrowShape": "M0,28.1 33.2,0 33.2,24.4 70,24.4 70,31.8 33.2,31.8 33.2,56.2 z" }'>
+                <div class="main-carousel" data-flickity='{ 
+                    "cellAlign": "center", 
+                    "pageDots": false, 
+                    "lazyLoad": true, 
+                    "imagesLoaded": true, 
+                    "autoPlay": 6000, 
+                    "pauseAutoPlayOnHover": false, 
+                    "arrowShape": "M0,28.1 33.2,0 33.2,24.4 70,24.4 70,31.8 33.2,31.8 33.2,56.2 z" }'>
                 <?php
                 $i = 0; 
                 foreach( $collection as $post ): ?>
