@@ -1,0 +1,21 @@
+/*--------------------------------------------------------------
+## Pagination
+--------------------------------------------------------------*/
+.page-numbers {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+	margin-top: 90px;
+}
+
+.page-numbers li {
+	list-style: none;
+	padding: 1em;
+}
+
+.page-numbers .current {
+	@include serif-bold;
+}

@@ -1,18 +1,16 @@
 import { hasClass } from './polyfills.js'
 
-console.log(hasClass)
 
 const layout = document.querySelector('.horizontal-grid')
 const list_button = document.querySelector('.layout-switch--list')
 const grid_button = document.querySelector('.layout-switch--grid')
 
-layout.classList.remove('visually-hidden')
-layout.classList.add('fade-in')
-
-//set local storage
 if (list_button !== null) {
-    console.log(list_button)
 
+    layout.classList.remove('visually-hidden')
+    layout.classList.add('fade-in')
+
+    //set local storage
     list_button.addEventListener('click', ((e) => {
         grid_button.classList.remove('selected')
         //add list class to collection archive container
@@ -43,7 +41,7 @@ if (list_button !== null) {
 
 }
 
-//toggle taxnomomy submenu
+// //toggle taxnomomy submenu
 const dropdown_toggle = document.querySelectorAll('.dropdown-toggle')
 const dropdown_menus = document.querySelectorAll('.dropdown-menu')
 
@@ -66,9 +64,42 @@ Array.from(dropdown_toggle).forEach(el => el.addEventListener('click', (e) => {
         }
     })
 
-    
 }) )
 
+
+// //keyboard navigation in collection
+document.addEventListener('keydown', (event) => {
+    const keyName = event.key
+    const keyCode = event.keyCode
+    const nav_prev_link = document.querySelector('.nav-previous a')
+    const nav_next_link = document.querySelector('.nav-next a')
+
+    if (keyName === 'Control') {
+        // do not alert when only Control key is pressed.
+        return;
+    }
+
+    let post_navigation_link = false;
+
+    if (nav_prev_link !== null) {
+        if (keyName === 'ArrowRight' || keyCode === '39') {
+            post_navigation_link = nav_prev_link.getAttribute('href')
+        }
+    } 
+    if (nav_next_link !== null) {
+        if (keyName === 'ArrowLeft' || keyCode === '37') {
+            post_navigation_link = nav_next_link.getAttribute('href')
+        }
+    }
+
+    if (post_navigation_link) {
+        window.location = post_navigation_link;
+    }
+
+}, false);
+
+
+// //photoswipe
 document.addEventListener("DOMContentLoaded", function () {
     // var flickity_img = document.querySelectorAll('.carousel-cell');
     //----Start PhotoSwipe
@@ -79,59 +110,43 @@ document.addEventListener("DOMContentLoaded", function () {
             var thumbElements = el.childNodes,
                 numNodes = thumbElements.length,
                 items = [],
-                el,
-                childElements,
-                thumbnailEl,
+                figureEl,
+                linkEl,
                 size,
                 item;
 
             for (var i = 0; i < numNodes; i++) {
-                el = thumbElements[i];
+                figureEl = thumbElements[i]; // <figure> element
 
                 // include only element nodes 
-                if (el.nodeType !== 1) {
+                if (figureEl.nodeType !== 1) {
                     continue;
                 }
 
-                childElements = el.children;
-
-                size = el.getAttribute('data-size').split('x');
+                linkEl = figureEl.children[0]; // <a> element
+                console.log(linkEl)
+                size = linkEl.getAttribute('data-size').split('x');
 
                 // create slide object
                 item = {
-                    src: el.getAttribute('href'),
+                    src: linkEl.getAttribute('href'),
                     w: parseInt(size[0], 10),
-                    h: parseInt(size[1], 10),
-                    author: el.getAttribute('data-author')
+                    h: parseInt(size[1], 10)
                 };
 
-                item.el = el; // save link to element for getThumbBoundsFn
 
-                if (childElements.length > 0) {
-                    item.msrc = childElements[0].children[0].getAttribute('data-ie'); // thumbnail url
-                    if (childElements.length > 1) {
-                        item.title = childElements[0].children[1].innerHTML; // caption (contents of figure)
-                    }
+
+                if (figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML;
                 }
 
-                var mediumSrc = el.getAttribute('data-med');
-                if (mediumSrc) {
-                    size = el.getAttribute('data-med-size').split('x');
-                    // "medium-sized" image
-                    item.m = {
-                        src: mediumSrc,
-                        w: parseInt(size[0], 10),
-                        h: parseInt(size[1], 10)
-                    };
+                if (linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('data-ie');
                 }
 
-                // original image
-                item.o = {
-                    src: item.src,
-                    w: item.w,
-                    h: item.h
-                };
-
+                item.el = figureEl; // save link to element for getThumbBoundsFn
                 items.push(item);
             }
 
@@ -143,23 +158,26 @@ document.addEventListener("DOMContentLoaded", function () {
             return el && (fn(el) ? el : closest(el.parentNode, fn));
         };
 
+        // triggers when user clicks on thumbnail
         var onThumbnailsClick = function (e) {
             e = e || window.event;
             e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
             var eTarget = e.target || e.srcElement;
 
+            // find root element of slide
             var clickedListItem = closest(eTarget, function (el) {
-                return el.tagName === 'A';
+                return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
             });
 
             if (!clickedListItem) {
                 return;
             }
 
-            var clickedGallery = clickedListItem.parentNode;
-
-            var childNodes = clickedListItem.parentNode.childNodes,
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
                 numChildNodes = childNodes.length,
                 nodeIndex = 0,
                 index;
@@ -176,17 +194,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 nodeIndex++;
             }
 
+
+
             if (index >= 0) {
+                // open PhotoSwipe if valid index found
                 openPhotoSwipe(index, clickedGallery);
             }
             return false;
         };
 
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
         var photoswipeParseHash = function () {
             var hash = window.location.hash.substring(1),
                 params = {};
 
-            if (hash.length < 5) { // pid=1
+            if (hash.length < 5) {
                 return params;
             }
 
@@ -220,29 +242,21 @@ document.addEventListener("DOMContentLoaded", function () {
             // define options (if needed)
             options = {
 
+                // define gallery index (for URL)
                 galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
                 getThumbBoundsFn: function (index) {
-                    // See Options->getThumbBoundsFn section of docs for more info
-                    var thumbnail = items[index].el.children[0],
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
                         pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
                         rect = thumbnail.getBoundingClientRect();
 
                     return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-                },
-
-                addCaptionHTMLFn: function (item, captionEl, isFake) {
-                    if (!item.title) {
-                        captionEl.children[0].innerText = '';
-                        return false;
-                    }
-                    captionEl.children[0].innerHTML = item.title;
-                    return true;
-                },
+                }
 
             };
 
-
+            // PhotoSwipe opened from URL
             if (fromURL) {
                 if (options.galleryPIDs) {
                     // parse real index when custom PIDs are used 
@@ -254,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 } else {
+                    // in URL indexes start from 1
                     options.index = parseInt(index, 10) - 1;
                 }
             } else {
@@ -271,64 +286,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Pass data to PhotoSwipe and initialize it
             gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-
-            // see: http://photoswipe.com/documentation/responsive-images.html
-            var realViewportWidth,
-                useLargeImages = false,
-                firstResize = true,
-                imageSrcWillChange;
-
-            gallery.listen('beforeResize', function () {
-
-                var dpiRatio = window.devicePixelRatio ? window.devicePixelRatio : 1;
-                dpiRatio = Math.min(dpiRatio, 2.5);
-                realViewportWidth = gallery.viewportSize.x * dpiRatio;
-                useLargeImages = true;
-                imageSrcWillChange = true;
-
-
-                // if (realViewportWidth >= 1200 || (!gallery.likelyTouchDevice && realViewportWidth > 800) || screen.width > 1200) {
-                //     if (!useLargeImages) {
-                //         useLargeImages = true;
-                //         imageSrcWillChange = true;
-                //     }
-
-                // } else {
-                //     if (useLargeImages) {
-                //         useLargeImages = false;
-                //         imageSrcWillChange = true;
-                //     }
-                // }
-
-                if (imageSrcWillChange && !firstResize) {
-                    gallery.invalidateCurrItems();
-                }
-
-                if (firstResize) {
-                    firstResize = false;
-                }
-
-                imageSrcWillChange = false;
-
-            });
-
-            gallery.listen('gettingData', function (index, item) {
-                if (useLargeImages) {
-                    item.src = item.o.src;
-                    item.w = item.o.w;
-                    item.h = item.o.h;
-                } else {
-                    item.src = item.m.src;
-                    item.w = item.m.w;
-                    item.h = item.m.h;
-                }
-            });
-
             gallery.init();
         };
 
-        // select all gallery elements
+        // loop through all gallery elements and bind events
         var galleryElements = document.querySelectorAll(gallerySelector);
+
         for (var i = 0, l = galleryElements.length; i < l; i++) {
             galleryElements[i].setAttribute('data-pswp-uid', i + 1);
             galleryElements[i].onclick = onThumbnailsClick;
@@ -341,10 +304,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+
     initPhotoSwipeFromDOM('.magnifiable');
 
-
 });
+// //set the images in collection to resize to the size of the viewport
+window.addEventListener('load', () => {
+
+    const imageContainer = document.querySelector('.artwork .post-thumbnail')
+    if (imageContainer !== null) {
+        const imageContainerPortrait = document.querySelector('.artwork.portrait .post-thumbnail')
+        const imageContainerLandscape = document.querySelector('.artwork.landscape .post-thumbnail')
+        const imageContainerTop = imageContainer.getBoundingClientRect().top
+        const viewportHeight = (window.innerHeight || document.documentElement.clientHeight)
+        const imageContainerHeight = (viewportHeight - imageContainerTop - 25)
+        const artworkDetails = document.querySelector('.artwork .detail-container')
+
+        if (imageContainerPortrait !== null) {
+            imageContainer.style.height = imageContainerHeight + 'px'
+        }
+
+        if (imageContainerLandscape !== null) {
+            if (parseInt(imageContainerLandscape.style.height) < imageContainerHeight) {
+                return;
+            } else {
+                imageContainerLandscape.style.height = imageContainerHeight + 'px'
+            }
+        }
+    }
+    
+
+})
 
 
 

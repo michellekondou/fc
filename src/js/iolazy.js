@@ -35,10 +35,9 @@ class IOlazy {
     handleChange(changes) {
 
         changes.forEach(change => {
-
             if (change.isIntersecting) {
 
-                change.target.classList.add('fade-in');
+                change.target.classList.add('fade-in')
 
                 if (change.target.parentNode.getElementsByClassName('loader-2').length > 0) {
                     change.target.parentNode.getElementsByClassName('loader-2')[0].style.display = 'none';

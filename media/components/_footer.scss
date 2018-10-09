@@ -1,0 +1,29 @@
+.site-footer {
+    margin-top: 180px;
+    .site-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding-bottom: 100px;
+        .icon {
+            &.logo-outlined {
+                font-size: 7px;
+            }
+            &.facebook {
+                 margin-right: 40px;
+            }
+            &:before {
+                margin-top: -10px;
+            }
+        }
+        p {
+            @include sans-regular;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin:0; 
+        }
+    }
+}

@@ -745,80 +745,7 @@ function order_archive_by_title($q) {
 	return $q;
 }
 
-//add_action( 'init', 'choose_layout' );
-function choose_layout() {
-	$layout = 'list';
-	if ($_GET['layout'] == 'list') {
-		setcookie('layout', 'list', time() + (60), '*/collection');
-	} elseif ($_GET['layout'] == 'grid') {
-		setcookie('layout', 'grid', time() + (60), '*/collection');
-	} else {
-		unset( $_COOKIE['layout'] );
-	}
-	//name, value, expire, path
-	//$_COOKIE['layout'] = "list"
-	
-	//unset( $_COOKIE['layout'] );
-  	//setcookie( 'layout', $_COOKIE['layout'], time() - ( 15 * 60 ) );
 
-}
-
-function layout_switch_scripts() {
- 
-	global $wp_query;
-	
-	$args = array(
-		'post_type'             => 'collection',
-		'post_status'           => 'publish',
-		'posts_per_page'        => 25
-	);
-	$loop = new WP_Query( $args );
- 
-	// register our main script but do not enqueue it yet
-	wp_register_script( 'layout_switch', get_stylesheet_directory_uri() . '/public/layout_switch.bundle.js');
- 
-	// now the most interesting part
-	// we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
-	// you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
-	wp_localize_script( 'layout_switch', 'layout_switch_params', array(
-		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-		'posts' => json_encode( $loop->query_vars ), // everything about your loop is here
-		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-		'post_type' => get_query_var( 'post_type' ),
-		'posts_per_page' => $loop->query_vars['posts_per_page'],
-		'max_page' => $loop->max_num_pages
-	) );
-
-	var_dump( $loop->query_vars['posts_per_page'] );
- 
- 	wp_enqueue_script( 'layout_switch' );
-}
- 
-//add_action( 'wp_enqueue_scripts', 'layout_switch_scripts' );
-
-function layout_switch_ajax_handler(){
- 
-	// prepare our arguments for the query
-	$args = json_decode( stripslashes( $_POST['query'] ), true );
-	$args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-	$args['post_status'] = 'publish';
- 
-	// it is always better to use WP_Query but not here
-	query_posts( $args );
-
-	var_dump( $args );
-	if( have_posts() ) :
- 
-		// run the loop
-		while( have_posts() ): the_post(); ?>
-			<?php echo 'AAAAAAAAAAAA'; ?>
-			<?php wc_get_template_part( 'template-parts/content', 'collection' ); ?>
-
- 		<?php endwhile;
- 
-	endif;
-	die; // here we exit the script and even no wp_reset_query() required!
-}
 
 /**
  * Handles JavaScript detection.
@@ -831,8 +758,44 @@ function felios_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
 add_action( 'wp_head', 'felios_javascript_detection', 0 );
+
+function my_pre_get_posts( $query ) {
+	
+	// do not modify queries in the admin
+	if( is_admin() ) {
+		
+		return $query;
+		
+	}
+	// only modify queries for 'event' post type
+	if( isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'collection' ) {
+			
+		$query->set('meta_key', 'year');
+		$query->set('orderby', array('meta_value' => 'DESC', 'post_title' => 'ASC'));
+	
+	}
+
+	// return
+	return $query;
+
+}
+
+add_action('pre_get_posts', 'my_pre_get_posts');
+
+
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyDWs5Kl4S40sW5pHYnmxhl4Sv56p06Qias');
+}
+
+add_action('acf/init', 'my_acf_init');
  
 //add_action('wp_ajax_layoutSwitch', 'layout_switch_ajax_handler'); // wp_ajax_{action}
 //add_action('wp_ajax_nopriv_layoutSwitch', 'layout_switch_ajax_handler'); // wp_ajax_nopriv_{action}
 
+
+// //remove default wp medium_large size
+// add_filter('intermediate_image_sizes', function($sizes) {
+//     return array_diff($sizes, ['medium_large']);
+// });
 

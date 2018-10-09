@@ -99,7 +99,7 @@ if($dimensions) {
 		?>	
 	<?php endif; ?>
 	<?php if ( get_post_type() == 'collection' ) : ?>
-		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<figure id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="maginfiable">
 			<?php if ( has_post_thumbnail() ) : ?>
 			<a 
 				class="post-thumbnail<?php 
@@ -134,22 +134,24 @@ if($dimensions) {
 							}
 						} 
 				} } ?>" href="<?php the_permalink(); ?>">
-				<img 
-					data-mobile-height="<?php echo $image_l[2]; ?>"
-					data-srcset="<?php echo $image_l[0]; ?> 600w, <?php echo $image_m[0]; ?> 400w"
-					data-ie="<?php echo $image_l[0]; ?>"
-					data-sizes="(max-width: 767px) and (min-width: 490px) 600px, 400px"
+				 <img
+					data-mobile-width="<?php echo $image_m[1]; ?>"
+					data-mobile-height="<?php echo $image_m[2]; ?>"
+					data-srcset="<?php echo $image_m[0]; ?> 330w,
+								<?php echo $image_s[0]; ?> 200w"
+					data-sizes="(max-width: 320px) 280px,
+								330px"
+					data-ie="<?php echo $image_m[0]; ?>"
 					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 					class="attachment-post-thumbnail size-post-thumbnail wp-post-image lazyload"
 					alt="<?php the_title(); ?>">
 				<noscript>
 					<img 
-						data-srcset="<?php echo $image_l[0]; ?> 400w"
-						sizes="400px"
-						src="<?php echo $image_l[0]; ?>"
+						data-srcset="<?php echo $image_m[0]; ?> 768w,"
+						sizes="(max-width: 768px) 720px,"
+						src="<?php echo $image_m[0]; ?>"
 						class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-js-thumb">
 				</noscript>
-				
 			</a>
 			<?php endif; ?>
 			<figcaption>			
